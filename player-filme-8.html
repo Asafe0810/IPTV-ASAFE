@@ -1,0 +1,1318 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diário de uma Paixão | IPTV DO ASAFE</title>
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { 
+            background: #000; 
+            color: #fff; 
+            font-family: Arial, sans-serif; 
+            overflow-x: hidden;
+            padding-top: 70px;
+            min-height: 100vh;
+        }
+        
+        /* Navbar */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(26, 26, 26, 0.95);
+            border-bottom: 2px solid #dc3545;
+            padding: 15px 20px;
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            backdrop-filter: blur(10px);
+        }
+        
+        .navbar-brand {
+            color: #fff;
+            font-size: 1.5rem;
+            font-weight: bold;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .navbar-content {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            flex: 1;
+            justify-content: flex-end;
+            position: relative;
+        }
+        
+        .navbar-nav {
+            display: flex;
+            gap: 15px;
+            list-style: none;
+        }
+        
+        .nav-link {
+            color: #fff;
+            text-decoration: none;
+            padding: 8px 15px;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        
+        .nav-link:hover {
+            background-color: #dc3545;
+            transform: translateY(-2px);
+        }
+        
+        /* Barra de Pesquisa */
+        .search-container {
+            max-width: 300px;
+            width: 100%;
+            position: relative;
+        }
+        
+        .search-container .input-group {
+            display: flex;
+        }
+        
+        .search-container input {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: white;
+            padding: 8px 12px;
+            border-radius: 5px 0 0 5px;
+            width: 100%;
+            outline: none;
+        }
+        
+        .search-container input:focus {
+            border-color: #dc3545;
+        }
+        
+        .search-container input::placeholder {
+            color: rgba(255, 255, 255, 0.6);
+        }
+        
+        .search-container button {
+            background: #dc3545;
+            border: none;
+            color: white;
+            padding: 8px 15px;
+            border-radius: 0 5px 5px 0;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+        
+        .search-container button:hover {
+            background: #bb2d3b;
+        }
+        
+        /* Container principal */
+        .container { 
+            max-width: 1400px; 
+            margin: 0 auto; 
+            padding: 20px; 
+        }
+        
+        /* Informações do filme */
+        .movie-info {
+            display: flex;
+            gap: 30px;
+            margin-bottom: 30px;
+            background: rgba(40, 40, 40, 0.9);
+            padding: 20px;
+            border-radius: 10px;
+            border: 2px solid #dc3545;
+        }
+        
+        .movie-poster {
+            flex: 0 0 250px;
+        }
+        
+        .movie-poster img {
+            width: 100%;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        }
+        
+        .movie-details {
+            flex: 1;
+        }
+        
+        .movie-title {
+            color: #fff;
+            margin-bottom: 15px;
+            font-size: 2rem;
+            border-bottom: 2px solid #dc3545;
+            padding-bottom: 10px;
+        }
+        
+        .movie-meta {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 15px;
+            color: #ccc;
+            flex-wrap: wrap;
+        }
+        
+        .movie-meta span {
+            background: rgba(220, 53, 69, 0.2);
+            padding: 5px 10px;
+            border-radius: 5px;
+        }
+        
+        .movie-rating {
+            color: #ffcc00;
+            margin-bottom: 15px;
+        }
+        
+        .movie-synopsis {
+            line-height: 1.6;
+            margin-bottom: 20px;
+            color: #ccc;
+        }
+        
+        /* Instruções */
+        .instructions {
+            background: rgba(220, 53, 69, 0.1);
+            border: 2px solid #dc3545;
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        
+        .instructions h3 {
+            color: #dc3545;
+            margin-bottom: 10px;
+        }
+        
+        /* Player Container */
+        .player-container {
+            background: #000;
+            border-radius: 10px;
+            overflow: hidden;
+            margin-bottom: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            position: relative;
+            width: 100%;
+            height: 700px;
+        }
+        
+        .player-wrapper {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: #000;
+        }
+        
+        #playerIframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+            border-radius: 8px;
+        }
+        
+        /* Controles */
+        .video-controls {
+            display: flex;
+            gap: 10px;
+            margin-top: 20px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        
+        .btn {
+            padding: 10px 20px;
+            background: #333;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.3s ease;
+        }
+        
+        .btn:hover {
+            background: #444;
+            transform: translateY(-2px);
+        }
+        
+        .btn-primary {
+            background: #dc3545;
+        }
+        
+        .btn-primary:hover {
+            background: #bb2d3b;
+        }
+        
+        .btn-success {
+            background: #28a745;
+        }
+        
+        .btn-success:hover {
+            background: #218838;
+        }
+        
+        .btn-romance {
+            background: #e83e8c;
+        }
+        
+        .btn-romance:hover {
+            background: #d81b60;
+        }
+        
+        /* Informações adicionais */
+        .additional-info {
+            background: rgba(40, 40, 40, 0.9);
+            border-radius: 15px;
+            padding: 25px;
+            margin-bottom: 30px;
+            border: 2px solid #dc3545;
+        }
+        
+        .info-section {
+            margin-bottom: 25px;
+        }
+        
+        .info-section h4 {
+            color: #fff;
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+            padding-bottom: 8px;
+            border-bottom: 1px solid rgba(220, 53, 69, 0.3);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .cast-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            gap: 20px;
+        }
+        
+        .cast-member {
+            text-align: center;
+        }
+        
+        .cast-photo {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 10px;
+            border: 2px solid #dc3545;
+        }
+        
+        .cast-name {
+            color: #fff;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        
+        .cast-character {
+            color: #ccc;
+            font-size: 0.9rem;
+        }
+        
+        .info-list {
+            list-style: none;
+        }
+        
+        .info-list li {
+            margin-bottom: 10px;
+            color: #ccc;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .info-list strong {
+            color: #dc3545;
+            min-width: 120px;
+            display: inline-block;
+        }
+        
+        /* Recomendações */
+        .recommendations {
+            background: rgba(40, 40, 40, 0.9);
+            border-radius: 15px;
+            padding: 25px;
+            border: 2px solid #dc3545;
+        }
+        
+        .recommendations h4 {
+            color: #fff;
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+            padding-bottom: 8px;
+            border-bottom: 1px solid rgba(220, 53, 69, 0.3);
+        }
+        
+        .recommendations-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+            gap: 20px;
+        }
+        
+        .rec-card {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 10px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            cursor: pointer;
+        }
+        
+        .rec-card:hover {
+            transform: translateY(-5px);
+            border-color: #dc3545;
+        }
+        
+        .rec-poster {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            border-bottom: 2px solid #dc3545;
+        }
+        
+        .rec-info {
+            padding: 15px;
+        }
+        
+        .rec-title {
+            color: #fff;
+            font-size: 0.9rem;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        
+        .rec-year {
+            color: #ccc;
+            font-size: 0.8rem;
+        }
+        
+        /* Footer */
+        .footer {
+            background: rgba(26, 26, 26, 0.95);
+            border-top: 2px solid #dc3545;
+            padding: 20px;
+            margin-top: 50px;
+            text-align: center;
+        }
+        
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .footer p {
+            margin: 5px 0;
+            color: #ccc;
+            font-size: 0.9rem;
+        }
+        
+        /* Estilos para resultados da busca */
+        .search-results-container {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: 0;
+            background: rgba(40, 40, 40, 0.98);
+            border: 1px solid #dc3545;
+            border-radius: 0 0 8px 8px;
+            max-height: 400px;
+            overflow-y: auto;
+            display: none;
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+            margin-top: 1px;
+        }
+        
+        .search-results-container.show {
+            display: block;
+        }
+        
+        .search-result-item {
+            padding: 10px 15px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            transition: background 0.3s ease;
+        }
+        
+        .search-result-item:hover {
+            background: rgba(220, 53, 69, 0.1);
+        }
+        
+        .search-result-item a {
+            color: white;
+            text-decoration: none;
+            display: block;
+        }
+        
+        .search-result-item:hover a {
+            color: #dc3545;
+        }
+        
+        .search-header {
+            background: rgba(0, 0, 0, 0.2);
+            padding: 10px 15px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .no-results {
+            padding: 20px;
+            text-align: center;
+            color: rgba(255, 255, 255, 0.6);
+        }
+        
+        /* Botão voltar ao topo */
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            background: #dc3545;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            cursor: pointer;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            z-index: 1000;
+            box-shadow: 0 4px 15px rgba(220, 53, 69, 0.4);
+        }
+        
+        .back-to-top.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .back-to-top:hover {
+            background: #ff0000;
+            transform: translateY(-5px);
+        }
+        
+        /* Romance Badge */
+        .romance-badge {
+            display: inline-block;
+            background: linear-gradient(45deg, #e83e8c, #dc3545);
+            color: white;
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            margin-left: 10px;
+            animation: pulse 2s infinite;
+        }
+        
+        /* Animações */
+        @keyframes pulse {
+            0% { opacity: 1; }
+            50% { opacity: 0.7; }
+            100% { opacity: 1; }
+        }
+        
+        @keyframes slideIn {
+            from { transform: translateY(-10px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+        
+        @keyframes slideOut {
+            from { transform: translateY(0); opacity: 1; }
+            to { transform: translateY(-10px); opacity: 0; }
+        }
+        
+        @keyframes romanceGlow {
+            0% { text-shadow: 0 0 5px #e83e8c; }
+            50% { text-shadow: 0 0 15px #dc3545; }
+            100% { text-shadow: 0 0 5px #e83e8c; }
+        }
+        
+        /* Responsividade */
+        @media (max-width: 768px) {
+            body {
+                padding-top: 120px;
+            }
+            
+            .navbar {
+                flex-direction: column;
+                gap: 15px;
+                padding: 10px 15px;
+            }
+            
+            .navbar-content {
+                flex-direction: column;
+                width: 100%;
+                gap: 10px;
+            }
+            
+            .search-container {
+                max-width: 100%;
+                width: 100%;
+            }
+            
+            .navbar-nav {
+                gap: 8px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            .nav-link {
+                padding: 6px 12px;
+                font-size: 0.9rem;
+            }
+            
+            .movie-info {
+                flex-direction: column;
+            }
+            
+            .movie-poster {
+                flex: 0 0 auto;
+                text-align: center;
+            }
+            
+            .movie-poster img {
+                max-width: 200px;
+            }
+            
+            .movie-title {
+                font-size: 1.5rem;
+            }
+            
+            .player-container {
+                height: 400px;
+            }
+            
+            .video-controls {
+                justify-content: center;
+            }
+            
+            .btn {
+                padding: 8px 15px;
+                font-size: 0.9rem;
+            }
+            
+            .cast-grid {
+                grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .player-container {
+                height: 300px;
+            }
+            
+            .video-controls {
+                gap: 5px;
+            }
+            
+            .btn {
+                padding: 6px 12px;
+                font-size: 0.8rem;
+            }
+            
+            .movie-meta {
+                gap: 10px;
+            }
+            
+            .movie-meta span {
+                font-size: 0.9rem;
+                padding: 4px 8px;
+            }
+            
+            .cast-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .recommendations-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 10px;
+            }
+            
+            .rec-poster {
+                height: 200px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <a href="index.html" class="navbar-brand">
+            <i class="bi bi-tv"></i> IPTV DO ASAFE
+        </a>
+        
+        <div class="navbar-content">
+            <!-- Barra de Pesquisa -->
+            <div class="search-container">
+                <div class="input-group">
+                    <input type="text" placeholder="Buscar filmes/séries..." id="navbarSearch">
+                    <button type="button" onclick="performSearch()">
+                        <i class="bi bi-search"></i>
+                    </button>
+                </div>
+            </div>
+            
+            <ul class="navbar-nav">
+                <li>
+                    <a href="index.html#futebol" class="nav-link">
+                        <i class="bi bi-controller"></i> Futebol
+                    </a>
+                </li>
+                <li>
+                    <a href="index.html#nba" class="nav-link">
+                        <i class="bi bi-basketball"></i> NBA
+                    </a>
+                </li>
+                <li>
+                    <a href="filmes.html" class="nav-link">
+                        <i class="bi bi-film"></i> Filmes/Series
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Conteúdo Principal -->
+    <div class="container">
+        <!-- Informações do filme -->
+        <div class="movie-info">
+            <div class="movie-poster">
+                <img src="https://image.tmdb.org/t/p/w185/A07izLVyZCrmq0HTvFg6qdqiZE5.jpg" 
+                     alt="Diário de uma Paixão">
+            </div>
+            <div class="movie-details">
+                <h1 class="movie-title">
+                    DIÁRIO DE UMA PAIXÃO
+                    <span class="romance-badge">ROMANCE</span>
+                </h1>
+                <div class="movie-meta">
+                    <span><i class="bi bi-clock"></i> 2h 3min</span>
+                    <span><i class="bi bi-calendar"></i> 2004</span>
+                    <span><i class="bi bi-star"></i> Romance/Drama</span>
+                    <span><i class="bi bi-tag"></i> HD 1080p</span>
+                    <span><i class="bi bi-award"></i> 14 anos</span>
+                </div>
+                <div class="movie-rating">
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-half"></i>
+                    <span style="margin-left: 10px;">7.8/10 IMDb</span>
+                </div>
+                <p class="movie-synopsis">
+                    Em uma casa de repouso, Duke lê para uma paciente com Alzheimer chamada Allie um romance escrito por Noah Calhoun, um operário de serraria que se apaixonou por Allie em 1940. Apesar de estarem em mundos completamente diferentes, os dois jovens vivem um tórrido e inesquecível amor. Porém, o pai de Allie não aprova o namoro, pois Noah é pobre. Eles são obrigados a se separar. Allie se forma em Nova York e se apaixona por Lon, um soldado rico. Noah escreve 365 cartas para Allie, mas elas são interceptadas pela mãe de Allie. A jovem decide então ir atrás de seu grande amor.
+                </p>
+            </div>
+        </div>
+
+        <!-- Instruções -->
+        <div class="instructions">
+            <h3><i class="bi bi-info-circle"></i> PLAYER OFICIAL - DIÁRIO DE UMA PAIXÃO</h3>
+            <p><strong>Player exclusivo em alta qualidade.</strong> Para melhor experiência:</p>
+            <ol style="text-align: left; max-width: 600px; margin: 10px auto; color: #ccc;">
+                <li>Use o botão <strong>"Tela Cheia"</strong> para visualização imersiva</li>
+                <li>Para tela cheia: <strong>Pressione F11</strong> ou use o botão do player</li>
+                <li>Se houver problemas, recarregue a página ou o player</li>
+                <li>Recomendado: Conexão estável para melhor qualidade</li>
+            </ol>
+        </div>
+
+        <!-- Player Container -->
+        <div class="player-container">
+            <div class="player-wrapper">
+                <iframe 
+                    width="100%" 
+                    height="700px" 
+                    allowfullscreen="" 
+                    webkitallowfullscreen="" 
+                    mozallowfullscreen="" 
+                    src="https://assistirseriesonline.icu/filme/tt0332280"
+                    id="playerIframe"
+                    frameborder="0"
+                    title="Diário de uma Paixão - Player Oficial">
+                </iframe>
+            </div>
+        </div>
+
+        <!-- Controles -->
+        <div class="video-controls">
+            <button class="btn btn-success" onclick="toggleFullscreen()">
+                <i class="bi bi-arrows-fullscreen"></i> Tela Cheia (F11)
+            </button>
+            <button class="btn" onclick="refreshPlayer()">
+                <i class="bi bi-arrow-clockwise"></i> Recarregar Player
+            </button>
+            <button class="btn btn-romance" onclick="window.location.href='filmes.html'">
+                <i class="bi bi-arrow-left"></i> Voltar para Filmes
+            </button>
+            <button class="btn btn-primary" onclick="window.location.href='player-filme-14.html'">
+                <i class="bi bi-play-circle"></i> Ver La La Land
+            </button>
+        </div>
+
+        <!-- Informações adicionais -->
+        <div class="additional-info">
+            <div class="info-section">
+                <h4><i class="bi bi-people"></i> Elenco Principal</h4>
+                <div class="cast-grid">
+                    <div class="cast-member">
+                        <img src="https://m.media-amazon.com/images/M/MV5BMTQzNzI2ODM5Ml5BMl5BanBnXkFtZTcwMTYxMjU4Mg@@._V1_.jpg" 
+                             alt="Ryan Gosling" class="cast-photo">
+                        <div class="cast-name">Ryan Gosling</div>
+                        <div class="cast-character">Noah Calhoun</div>
+                    </div>
+                    <div class="cast-member">
+                        <img src="https://m.media-amazon.com/images/M/MV5BMTYzMDg3NDA5MF5BMl5BanBnXkFtZTcwNDgzNTk1NA@@._V1_.jpg" 
+                             alt="Rachel McAdams" class="cast-photo">
+                        <div class="cast-name">Rachel McAdams</div>
+                        <div class="cast-character">Allie Hamilton</div>
+                    </div>
+                    <div class="cast-member">
+                        <img src="https://m.media-amazon.com/images/M/MV5BMTUyOTc1MjMxNF5BMl5BanBnXkFtZTcwNzY3NzI5Mw@@._V1_.jpg" 
+                             alt="James Garner" class="cast-photo">
+                        <div class="cast-name">James Garner</div>
+                        <div class="cast-character">Duke (Noah Idoso)</div>
+                    </div>
+                    <div class="cast-member">
+                        <img src="https://m.media-amazon.com/images/M/MV5BMTU0NDE0NzkzMF5BMl5BanBnXkFtZTcwNjgyMjYzMg@@._V1_.jpg" 
+                             alt="Gena Rowlands" class="cast-photo">
+                        <div class="cast-name">Gena Rowlands</div>
+                        <div class="cast-character">Allie Idosa</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="info-section">
+                <h4><i class="bi bi-info-circle"></i> Informações Técnicas</h4>
+                <ul class="info-list">
+                    <li><strong>Título Original:</strong> The Notebook</li>
+                    <li><strong>Ano de Produção:</strong> 2004</li>
+                    <li><strong>Duração:</strong> 123 minutos</li>
+                    <li><strong>País de Origem:</strong> Estados Unidos</li>
+                    <li><strong>Idioma Original:</strong> Inglês</li>
+                    <li><strong>Direção:</strong> Nick Cassavetes</li>
+                    <li><strong>Baseado em:</strong> Romance de Nicholas Sparks</li>
+                    <li><strong>Orçamento:</strong> $29 milhões</li>
+                    <li><strong>Bilheteria:</strong> $115.6 milhões</li>
+                </ul>
+            </div>
+            
+            <div class="info-section">
+                <h4><i class="bi bi-film"></i> Curiosidades</h4>
+                <p class="movie-synopsis">
+                    O filme é baseado no romance best-seller de Nicholas Sparks, que se inspirou na história de amor dos avós de sua esposa. Durante as gravações, Ryan Gosling e Rachel McAdams tiveram algumas desavenças, mas acabaram se tornando um casal na vida real e ficaram juntos por vários anos. A famosa cena do beijo na chuva teve que ser regravada várias vezes e os atores ficaram ensopados por horas. O filme se tornou um clássico do romance e é frequentemente citado como um dos filmes mais românticos de todos os tempos.
+                </p>
+            </div>
+        </div>
+        
+        <!-- Recomendações -->
+        <div class="recommendations">
+            <h4><i class="bi bi-collection-play"></i> Você Também Pode Gostar</h4>
+            <div class="recommendations-grid">
+                <div class="rec-card" onclick="window.location.href='player-filme-14.html'">
+                    <img src="https://i5.walmartimages.com/seo/Rolled-Poster-La-La-Land-Movie-24-x-36-Poster_20f02811-01b4-4aea-9bb2-a79942bd2642_1.856c035d66f8fd216f6d933259bc3dfb.jpeg" 
+                         alt="La La Land" class="rec-poster">
+                    <div class="rec-info">
+                        <div class="rec-title">La La Land</div>
+                        <div class="rec-year">2016</div>
+                    </div>
+                </div>
+                
+                <div class="rec-card" onclick="window.location.href='#'">
+                    <img src="https://br.web.img2.acsta.net/r_1920_1080/medias/nmedia/18/86/96/34/20028591.jpg" 
+                         alt="À Procura da Felicidade" class="rec-poster">
+                    <div class="rec-info">
+                        <div class="rec-title">À Procura da Felicidade</div>
+                        <div class="rec-year">2006</div>
+                    </div>
+                </div>
+                
+                <div class="rec-card" onclick="window.location.href='#'">
+                    <img src="https://m.media-amazon.com/images/M/MV5BNTg2MDg4MjI5NV5BMl5BanBnXkFtZTcwMzQ0MDczMw@@._V1_.jpg" 
+                         alt="P.S. Eu Te Amo" class="rec-poster">
+                    <div class="rec-info">
+                        <div class="rec-title">P.S. Eu Te Amo</div>
+                        <div class="rec-year">2007</div>
+                    </div>
+                </div>
+                
+                <div class="rec-card" onclick="window.location.href='#'">
+                    <img src="https://br.web.img2.acsta.net/medias/nmedia/18/87/32/17/19874294.jpg" 
+                         alt="A Última Música" class="rec-poster">
+                    <div class="rec-info">
+                        <div class="rec-title">A Última Música</div>
+                        <div class="rec-year">2010</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <p><strong>IPTV DO ASAFE</strong> - Desenvolvido para uso pessoal</p>
+            <p>© 2025 Todos os direitos reservados | Conteúdo para fins educacionais</p>
+            <p style="font-size: 0.8rem; color: #888; margin-top: 10px;">
+                Este conteúdo é disponibilizado apenas para uso pessoal. Não distribuímos conteúdo protegido por direitos autorais.
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        // Elementos DOM
+        const iframe = document.getElementById('playerIframe');
+        const searchInput = document.getElementById('navbarSearch');
+        
+        // Inicialização
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('Diário de uma Paixão - Página carregada com sucesso!');
+            
+            // Inicializar barra de busca
+            initializeSearch();
+            
+            // Configurar botão voltar ao topo
+            setupBackToTop();
+            
+            // Scroll suave para âncoras
+            setupSmoothScroll();
+            
+            // Configurar recomendações
+            setupRecommendations();
+            
+            // Adicionar animação ao título
+            const title = document.querySelector('.movie-title');
+            title.style.animation = 'romanceGlow 3s infinite';
+        });
+        
+        // Função para rolar para o topo
+        function scrollToTop() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        }
+        
+        // Inicializar sistema de busca
+        function initializeSearch() {
+            // Busca ao pressionar Enter
+            searchInput.addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') {
+                    performSearch();
+                }
+            });
+            
+            // Busca em tempo real
+            searchInput.addEventListener('input', function() {
+                if (this.value.length >= 2) {
+                    performSearch();
+                } else if (this.value.length === 0) {
+                    clearSearchResults();
+                }
+            });
+            
+            // Tecla Escape para limpar busca
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape') {
+                    clearSearchResults();
+                    searchInput.value = '';
+                }
+            });
+        }
+        
+        // Função de busca
+        function handleSearch() {
+            const searchTerm = searchInput.value.trim();
+            if (searchTerm) {
+                performSearch();
+            }
+        }
+        
+        // Realizar busca
+        function performSearch() {
+            const searchTerm = searchInput.value.trim().toLowerCase();
+            
+            if (!searchTerm || searchTerm.length < 2) {
+                clearSearchResults();
+                return;
+            }
+            
+            // Criar ou obter container de resultados
+            let resultsContainer = document.querySelector('.search-results-container');
+            if (!resultsContainer) {
+                resultsContainer = document.createElement('div');
+                resultsContainer.className = 'search-results-container';
+                searchInput.parentNode.appendChild(resultsContainer);
+            }
+            
+            // Resultados simulados
+            const mockResults = [
+                {
+                    title: "Diário de uma Paixão",
+                    type: "Filme",
+                    category: "Romance/Drama",
+                    link: "player-filme-8.html",
+                    badgeColor: "#e83e8c",
+                    current: true
+                },
+                {
+                    title: "La La Land",
+                    type: "Filme", 
+                    category: "Romance/Musical",
+                    link: "player-filme-14.html",
+                    badgeColor: "warning"
+                },
+                {
+                    title: "À Procura da Felicidade",
+                    type: "Filme",
+                    category: "Drama",
+                    link: "#",
+                    badgeColor: "warning"
+                },
+                {
+                    title: "P.S. Eu Te Amo",
+                    type: "Filme",
+                    category: "Romance/Drama",
+                    link: "#",
+                    badgeColor: "warning"
+                },
+                {
+                    title: "A Última Música",
+                    type: "Filme",
+                    category: "Romance/Drama",
+                    link: "#",
+                    badgeColor: "warning"
+                },
+                {
+                    title: "Bridgerton",
+                    type: "Série",
+                    category: "Romance/Drama",
+                    link: "#",
+                    badgeColor: "info"
+                }
+            ];
+            
+            let resultsHTML = '';
+            let foundResults = false;
+            
+            // Filtrar resultados simulados
+            mockResults.forEach(item => {
+                if (item.title.toLowerCase().includes(searchTerm) || 
+                    item.category.toLowerCase().includes(searchTerm) ||
+                    "diário paixão romance".includes(searchTerm)) {
+                    
+                    foundResults = true;
+                    const isCurrent = item.current ? 'ATUAL' : item.type;
+                    const badgeColor = item.current ? '#e83e8c' : (item.type === 'Filme' ? '#ffc107' : '#0dcaf0');
+                    const badgeTextColor = '#fff';
+                    
+                    resultsHTML += `
+                        <div class="search-result-item">
+                            <a href="${item.link}" class="d-block">
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <div>
+                                        <strong>${item.title}</strong>
+                                        <div class="small text-muted">${item.category} • ${item.type}</div>
+                                    </div>
+                                    <span class="badge" style="background-color: ${badgeColor}; color: ${badgeTextColor};">${isCurrent}</span>
+                                </div>
+                            </a>
+                        </div>
+                    `;
+                }
+            });
+            
+            if (!foundResults) {
+                resultsHTML = '<div class="no-results">Nenhum resultado encontrado</div>';
+            } else {
+                resultsHTML = `<div class="search-header">
+                                <small class="text-muted">Resultados da busca:</small>
+                              </div>` + resultsHTML;
+            }
+            
+            resultsContainer.innerHTML = resultsHTML;
+            resultsContainer.classList.add('show');
+            
+            // Fechar resultados ao clicar fora
+            setTimeout(() => {
+                document.addEventListener('click', closeSearchResults);
+            }, 100);
+        }
+        
+        // Limpar resultados da busca
+        function clearSearchResults() {
+            const resultsContainer = document.querySelector('.search-results-container');
+            if (resultsContainer) {
+                resultsContainer.classList.remove('show');
+                resultsContainer.innerHTML = '';
+            }
+        }
+        
+        // Fechar resultados da busca
+        function closeSearchResults(e) {
+            const resultsContainer = document.querySelector('.search-results-container');
+            
+            if (resultsContainer && !resultsContainer.contains(e.target) && e.target !== searchInput) {
+                resultsContainer.classList.remove('show');
+                document.removeEventListener('click', closeSearchResults);
+            }
+        }
+        
+        // Botão para voltar ao topo
+        function setupBackToTop() {
+            const backToTopBtn = document.createElement('button');
+            backToTopBtn.className = 'back-to-top';
+            backToTopBtn.innerHTML = '<i class="bi bi-chevron-up"></i>';
+            backToTopBtn.title = 'Voltar ao topo';
+            backToTopBtn.onclick = scrollToTop;
+            
+            document.body.appendChild(backToTopBtn);
+            
+            window.addEventListener('scroll', function() {
+                if (window.pageYOffset > 300) {
+                    backToTopBtn.classList.add('visible');
+                } else {
+                    backToTopBtn.classList.remove('visible');
+                }
+            });
+        }
+        
+        // Scroll suave para âncoras
+        function setupSmoothScroll() {
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    const targetId = this.getAttribute('href');
+                    if (targetId === '#' || targetId === '#!') return;
+                    
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        e.preventDefault();
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 80,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+        }
+        
+        // Configurar recomendações
+        function setupRecommendations() {
+            const recCards = document.querySelectorAll('.rec-card');
+            recCards.forEach(card => {
+                card.addEventListener('click', function() {
+                    const link = this.getAttribute('onclick').match(/location\.href='([^']+)'/)?.[1];
+                    if (link) {
+                        window.location.href = link;
+                    }
+                });
+            });
+        }
+        
+        // Recarregar player
+        function refreshPlayer() {
+            iframe.src = iframe.src;
+            showMessage('Player recarregado!');
+        }
+        
+        // Tela cheia usando API do navegador
+        function toggleFullscreen() {
+            const element = document.documentElement;
+            
+            if (!document.fullscreenElement) {
+                // Entrar em tela cheia
+                if (element.requestFullscreen) {
+                    element.requestFullscreen();
+                } else if (element.webkitRequestFullscreen) {
+                    element.webkitRequestFullscreen();
+                } else if (element.msRequestFullscreen) {
+                    element.msRequestFullscreen();
+                }
+                showMessage('Modo tela cheia ativado. Pressione ESC ou F11 para sair.');
+            } else {
+                // Sair da tela cheia
+                if (document.exitFullscreen) {
+                    document.exitFullscreen();
+                } else if (document.webkitExitFullscreen) {
+                    document.webkitExitFullscreen();
+                } else if (document.msExitFullscreen) {
+                    document.msExitFullscreen();
+                }
+            }
+        }
+        
+        // Função para mostrar mensagens
+        function showMessage(message) {
+            // Criar elemento de mensagem
+            const messageEl = document.createElement('div');
+            messageEl.style.cssText = `
+                position: fixed;
+                top: 100px;
+                right: 20px;
+                background: rgba(40, 40, 40, 0.95);
+                color: white;
+                padding: 15px 20px;
+                border-radius: 8px;
+                border-left: 4px solid #e83e8c;
+                z-index: 10000;
+                animation: slideIn 0.3s ease;
+                max-width: 300px;
+                box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            `;
+            
+            messageEl.innerHTML = `
+                <div style="display: flex; align-items: center; gap: 10px;">
+                    <i class="bi bi-info-circle" style="color: #e83e8c;"></i>
+                    <span>${message}</span>
+                </div>
+            `;
+            
+            document.body.appendChild(messageEl);
+            
+            // Remover após 3 segundos
+            setTimeout(() => {
+                messageEl.style.animation = 'slideOut 0.3s ease';
+                setTimeout(() => messageEl.remove(), 300);
+            }, 3000);
+        }
+        
+        // Detectar tela cheia
+        document.addEventListener('fullscreenchange', handleFullscreenChange);
+        document.addEventListener('webkitfullscreenchange', handleFullscreenChange);
+        document.addEventListener('mozfullscreenchange', handleFullscreenChange);
+        document.addEventListener('MSFullscreenChange', handleFullscreenChange);
+        
+        function handleFullscreenChange() {
+            if (document.fullscreenElement) {
+                // Ajustar iframe em tela cheia
+                iframe.style.width = '100vw';
+                iframe.style.height = '100vh';
+                iframe.style.position = 'fixed';
+                iframe.style.top = '0';
+                iframe.style.left = '0';
+                iframe.style.zIndex = '9999';
+            } else {
+                // Restaurar tamanho normal
+                iframe.style.width = '100%';
+                iframe.style.height = '700px';
+                iframe.style.position = '';
+                iframe.style.top = '';
+                iframe.style.left = '';
+                iframe.style.zIndex = '';
+            }
+        }
+        
+        // Verificar se o player carregou
+        iframe.addEventListener('load', function() {
+            console.log('Player Diário de uma Paixão carregado com sucesso');
+            showMessage('Player carregado! Use F11 para tela cheia.');
+        });
+        
+        iframe.addEventListener('error', function() {
+            showMessage('❌ Erro ao carregar o player. Tente recarregar a página.');
+        });
+        
+        // Teclas de atalho
+        document.addEventListener('keydown', function(e) {
+            // F11 para tela cheia
+            if (e.key === 'F11') {
+                e.preventDefault();
+                toggleFullscreen();
+            }
+            
+            // F para tela cheia
+            if (e.key === 'f' || e.key === 'F') {
+                if (!e.target.matches('input, textarea')) {
+                    e.preventDefault();
+                    toggleFullscreen();
+                }
+            }
+            
+            // R para recarregar
+            if (e.key === 'r' || e.key === 'R') {
+                if (!e.target.matches('input, textarea')) {
+                    e.preventDefault();
+                    refreshPlayer();
+                }
+            }
+            
+            // B para voltar
+            if (e.key === 'b' || e.key === 'B') {
+                if (!e.target.matches('input, textarea')) {
+                    e.preventDefault();
+                    window.location.href = 'filmes.html';
+                }
+            }
+            
+            // L para La La Land
+            if (e.key === 'l' || e.key === 'L') {
+                if (!e.target.matches('input, textarea')) {
+                    e.preventDefault();
+                    window.location.href = 'player-filme-14.html';
+                }
+            }
+            
+            // Ctrl+F para focar na busca
+            if ((e.ctrlKey && e.key === 'f') || e.key === '/') {
+                if (!e.target.matches('input, textarea')) {
+                    e.preventDefault();
+                    searchInput.focus();
+                    searchInput.select();
+                }
+            }
+            
+            // ESC para sair da tela cheia
+            if (e.key === 'Escape') {
+                if (document.fullscreenElement) {
+                    toggleFullscreen();
+                }
+            }
+        });
+        
+        // Inicialização
+        window.onload = function() {
+            console.log('Página Diário de uma Paixão carregada');
+            showMessage('Dicas: Ctrl+F = Buscar | F11 = Tela cheia | R = Recarregar | B = Voltar | L = La La Land');
+            
+            // Forçar permissões de tela cheia no iframe
+            iframe.setAttribute('allowfullscreen', '');
+            iframe.setAttribute('webkitallowfullscreen', '');
+            iframe.setAttribute('mozallowfullscreen', '');
+            
+            // Fade in da página
+            document.body.style.opacity = '0';
+            document.body.style.transition = 'opacity 0.3s ease';
+            setTimeout(() => {
+                document.body.style.opacity = '1';
+            }, 100);
+            
+            // Destacar badge de Romance
+            const romanceBadge = document.querySelector('.romance-badge');
+            romanceBadge.style.animation = 'pulse 2s infinite';
+        };
+    </script>
+</body>
+</html>

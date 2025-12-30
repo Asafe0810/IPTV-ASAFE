@@ -1,0 +1,1574 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Filmes e Séries | IPTV DO ASAFE</title>
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { 
+            background: #000; 
+            color: #fff; 
+            font-family: Arial, sans-serif; 
+            overflow-x: hidden;
+            padding-top: 70px;
+            min-height: 100vh;
+        }
+        
+        /* Navbar */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(26, 26, 26, 0.95);
+            border-bottom: 2px solid #dc3545;
+            padding: 15px 20px;
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            backdrop-filter: blur(10px);
+        }
+        
+        .navbar-brand {
+            color: #fff;
+            font-size: 1.5rem;
+            font-weight: bold;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .navbar-content {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            flex: 1;
+            justify-content: flex-end;
+            position: relative;
+        }
+        
+        .navbar-nav {
+            display: flex;
+            gap: 15px;
+            list-style: none;
+        }
+        
+        .nav-link {
+            color: #fff;
+            text-decoration: none;
+            padding: 8px 15px;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        
+        .nav-link:hover {
+            background-color: #dc3545;
+            transform: translateY(-2px);
+        }
+        
+        /* Barra de Pesquisa */
+        .search-container {
+            max-width: 300px;
+            width: 100%;
+            position: relative;
+        }
+        
+        .search-container .input-group {
+            display: flex;
+        }
+        
+        .search-container input {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: white;
+            padding: 8px 12px;
+            border-radius: 5px 0 0 5px;
+            width: 100%;
+            outline: none;
+        }
+        
+        .search-container input:focus {
+            border-color: #dc3545;
+        }
+        
+        .search-container input::placeholder {
+            color: rgba(255, 255, 255, 0.6);
+        }
+        
+        .search-container button {
+            background: #dc3545;
+            border: none;
+            color: white;
+            padding: 8px 15px;
+            border-radius: 0 5px 5px 0;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+        
+        .search-container button:hover {
+            background: #bb2d3b;
+        }
+        
+        /* Container principal */
+        .container { 
+            max-width: 1400px; 
+            margin: 0 auto; 
+            padding: 20px; 
+        }
+        
+        /* Layout principal */
+        .main-content {
+            display: flex;
+            gap: 30px;
+            margin-top: 20px;
+        }
+        
+        /* Sidebar de categorias */
+        .categories-sidebar {
+            width: 280px;
+            flex-shrink: 0;
+            background: rgba(40, 40, 40, 0.9);
+            border-radius: 10px;
+            padding: 20px;
+            height: fit-content;
+            border: 2px solid #dc3545;
+        }
+        
+        .categories-sidebar h3 {
+            color: #fff;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #dc3545;
+            font-size: 1.3rem;
+        }
+        
+        .category-list {
+            list-style: none;
+        }
+        
+        .category-item {
+            margin-bottom: 10px;
+        }
+        
+        .category-btn {
+            width: 100%;
+            padding: 12px 15px;
+            background: rgba(255, 255, 255, 0.05);
+            border: none;
+            color: #fff;
+            text-align: left;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 0.95rem;
+        }
+        
+        .category-btn:hover {
+            background: rgba(220, 53, 69, 0.2);
+            transform: translateX(5px);
+        }
+        
+        .category-btn.active {
+            background: rgba(220, 53, 69, 0.3);
+            border-left: 4px solid #dc3545;
+        }
+        
+        /* Conteúdo principal */
+        .content-area {
+            flex: 1;
+        }
+        
+        /* Banner de destaque */
+        .featured-banner {
+            background: linear-gradient(135deg, rgba(220, 53, 69, 0.2), rgba(26, 26, 26, 0.9));
+            border-radius: 10px;
+            padding: 30px;
+            margin-bottom: 30px;
+            border: 2px solid #dc3545;
+            text-align: center;
+        }
+        
+        .featured-banner h2 {
+            color: #fff;
+            font-size: 2rem;
+            margin-bottom: 10px;
+        }
+        
+        .featured-banner p {
+            color: #ccc;
+            font-size: 1.1rem;
+        }
+        
+        /* Seções */
+        .section {
+            margin-bottom: 40px;
+        }
+        
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #dc3545;
+        }
+        
+        .section-header h3 {
+            color: #fff;
+            font-size: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .view-all {
+            color: #dc3545;
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+        }
+        
+        .view-all:hover {
+            color: #fff;
+            transform: translateX(5px);
+        }
+        
+        /* Grid de filmes/séries */
+        .content-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 20px;
+        }
+        
+        /* Cards */
+        .content-card {
+            background: rgba(40, 40, 40, 0.9);
+            border-radius: 10px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .content-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 20px rgba(220, 53, 69, 0.3);
+            border-color: #dc3545;
+        }
+        
+        .card-poster {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            border-bottom: 2px solid #dc3545;
+        }
+        
+        .card-info {
+            padding: 15px;
+        }
+        
+        .card-title {
+            color: #fff;
+            font-size: 1rem;
+            margin-bottom: 8px;
+            font-weight: bold;
+            height: 40px;
+            overflow: hidden;
+        }
+        
+        .card-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+            font-size: 0.85rem;
+            color: #ccc;
+        }
+        
+        .card-category {
+            background: rgba(220, 53, 69, 0.2);
+            padding: 3px 8px;
+            border-radius: 3px;
+        }
+        
+        .card-rating {
+            color: #ffcc00;
+        }
+        
+        .card-actions {
+            display: flex;
+            gap: 10px;
+        }
+        
+        .watch-btn {
+            flex: 1;
+            padding: 8px 15px;
+            background: #dc3545;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 5px;
+        }
+        
+        .watch-btn:hover {
+            background: #bb2d3b;
+            transform: translateY(-2px);
+        }
+        
+        /* Footer */
+        .footer {
+            background: rgba(26, 26, 26, 0.95);
+            border-top: 2px solid #dc3545;
+            padding: 20px;
+            margin-top: 50px;
+            text-align: center;
+        }
+        
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .footer p {
+            margin: 5px 0;
+            color: #ccc;
+            font-size: 0.9rem;
+        }
+        
+        /* Estilos para resultados da busca */
+        .search-results-container {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: 0;
+            background: rgba(40, 40, 40, 0.98);
+            border: 1px solid #dc3545;
+            border-radius: 0 0 8px 8px;
+            max-height: 400px;
+            overflow-y: auto;
+            display: none;
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+            margin-top: 1px;
+        }
+        
+        .search-results-container.show {
+            display: block;
+        }
+        
+        .search-result-item {
+            padding: 10px 15px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            transition: background 0.3s ease;
+        }
+        
+        .search-result-item:hover {
+            background: rgba(220, 53, 69, 0.1);
+        }
+        
+        .search-result-item a {
+            color: white;
+            text-decoration: none;
+            display: block;
+        }
+        
+        .search-result-item:hover a {
+            color: #dc3545;
+        }
+        
+        .search-header {
+            background: rgba(0, 0, 0, 0.2);
+            padding: 10px 15px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .no-results {
+            padding: 20px;
+            text-align: center;
+            color: rgba(255, 255, 255, 0.6);
+        }
+        
+        /* Botão voltar ao topo */
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            background: #dc3545;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            cursor: pointer;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            z-index: 1000;
+            box-shadow: 0 4px 15px rgba(220, 53, 69, 0.4);
+        }
+        
+        .back-to-top.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .back-to-top:hover {
+            background: #ff0000;
+            transform: translateY(-5px);
+        }
+        
+        /* Responsividade */
+        @media (max-width: 1024px) {
+            .content-grid {
+                grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+            }
+        }
+        
+        @media (max-width: 768px) {
+            body {
+                padding-top: 120px;
+            }
+            
+            .navbar {
+                flex-direction: column;
+                gap: 15px;
+                padding: 10px 15px;
+            }
+            
+            .navbar-content {
+                flex-direction: column;
+                width: 100%;
+                gap: 10px;
+            }
+            
+            .search-container {
+                max-width: 100%;
+                width: 100%;
+            }
+            
+            .navbar-nav {
+                gap: 8px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            .nav-link {
+                padding: 6px 12px;
+                font-size: 0.9rem;
+            }
+            
+            .main-content {
+                flex-direction: column;
+            }
+            
+            .categories-sidebar {
+                width: 100%;
+                margin-bottom: 20px;
+            }
+            
+            .category-btn {
+                padding: 10px 15px;
+            }
+            
+            .content-grid {
+                grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+                gap: 15px;
+            }
+            
+            .card-poster {
+                height: 220px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .content-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 10px;
+            }
+            
+            .card-poster {
+                height: 180px;
+            }
+            
+            .card-info {
+                padding: 10px;
+            }
+            
+            .card-title {
+                font-size: 0.9rem;
+                height: 35px;
+            }
+            
+            .watch-btn {
+                padding: 6px 10px;
+                font-size: 0.8rem;
+            }
+            
+            .featured-banner {
+                padding: 20px;
+            }
+            
+            .featured-banner h2 {
+                font-size: 1.5rem;
+            }
+        }
+        
+        /* Animações */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .content-card {
+            animation: fadeIn 0.5s ease forwards;
+            opacity: 0;
+        }
+        
+        .content-card:nth-child(1) { animation-delay: 0.1s; }
+        .content-card:nth-child(2) { animation-delay: 0.2s; }
+        .content-card:nth-child(3) { animation-delay: 0.3s; }
+        .content-card:nth-child(4) { animation-delay: 0.4s; }
+        .content-card:nth-child(5) { animation-delay: 0.5s; }
+        .content-card:nth-child(6) { animation-delay: 0.6s; }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <a href="index.html" class="navbar-brand">
+            <i class="bi bi-tv"></i> IPTV DO ASAFE
+        </a>
+        
+        <div class="navbar-content">
+            <!-- Barra de Pesquisa -->
+            <div class="search-container">
+                <div class="input-group">
+                    <input type="text" placeholder="Buscar filmes/séries..." id="navbarSearch">
+                    <button type="button" onclick="performSearch()">
+                        <i class="bi bi-search"></i>
+                    </button>
+                </div>
+            </div>
+            
+            <ul class="navbar-nav">
+                <li>
+                    <a href="index.html#futebol" class="nav-link">
+                        <i class="bi bi-controller"></i> Futebol
+                    </a>
+                </li>
+                <li>
+                    <a href="index.html#nba" class="nav-link">
+                        <i class="bi bi-basketball"></i> NBA
+                    </a>
+                </li>
+                <li>
+                    <a href="filmes.html" class="nav-link">
+                        <i class="bi bi-film"></i> Filmes/Series
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Conteúdo Principal -->
+    <div class="container">
+        <!-- Banner de destaque -->
+        <div class="featured-banner">
+            <h2><i class="bi bi-film"></i> FILMES E SÉRIES EM ALTA</h2>
+            <p>Assista aos melhores conteúdos em qualidade HD | +500 títulos disponíveis</p>
+        </div>
+        
+        <div class="main-content">
+            <!-- Sidebar de categorias -->
+            <div class="categories-sidebar">
+                <h3><i class="bi bi-list"></i> CATEGORIAS</h3>
+                <ul class="category-list">
+                    <li class="category-item">
+                        <button class="category-btn active" data-category="destaques">
+                            <i class="bi bi-star"></i> Destaques
+                        </button>
+                    </li>
+                    <li class="category-item">
+                        <button class="category-btn" data-category="acao">
+                            <i class="bi bi-lightning"></i> Ação
+                        </button>
+                    </li>
+                    <li class="category-item">
+                        <button class="category-btn" data-category="aventura">
+                            <i class="bi bi-compass"></i> Aventura
+                        </button>
+                    </li>
+                    <li class="category-item">
+                        <button class="category-btn" data-category="marvel">
+                            <i class="bi bi-asterisk"></i> Marvel
+                        </button>
+                    </li>
+                    <li class="category-item">
+                        <button class="category-btn" data-category="dc">
+                            <i class="bi bi-shield"></i> DC
+                        </button>
+                    </li>
+                    <li class="category-item">
+                        <button class="category-btn" data-category="romance">
+                            <i class="bi bi-heart"></i> Romance
+                        </button>
+                    </li>
+                    <li class="category-item">
+                        <button class="category-btn" data-category="netflix">
+                            <i class="bi bi-tv"></i> Netflix
+                        </button>
+                    </li>
+                    <li class="category-item">
+                        <button class="category-btn" data-category="hbo">
+                            <i class="bi bi-tv-fill"></i> HBO Max
+                        </button>
+                    </li>
+                    <li class="category-item">
+                        <button class="category-btn" data-category="disney">
+                            <i class="bi bi-magic"></i> Disney+
+                        </button>
+                    </li>
+                    <li class="category-item">
+                        <button class="category-btn" data-category="terror">
+                            <i class="bi bi-moon"></i> Terror
+                        </button>
+                    </li>
+                    <li class="category-item">
+                        <button class="category-btn" data-category="comedia">
+                            <i class="bi bi-emoji-laughing"></i> Comédia
+                        </button>
+                    </li>
+                    <li class="category-item">
+                        <button class="category-btn" data-category="ficcao">
+                            <i class="bi bi-rocket"></i> Ficção Científica
+                        </button>
+                    </li>
+                </ul>
+            </div>
+            
+            <!-- Área de conteúdo -->
+            <div class="content-area">
+                <!-- Filmes em Destaque -->
+                <div class="section" id="filmes-destaque">
+                    <div class="section-header">
+                        <h3><i class="bi bi-trophy"></i> FILMES EM DESTAQUE</h3>
+                        <a href="#" class="view-all">Ver todos <i class="bi bi-arrow-right"></i></a>
+                    </div>
+                    
+                    <div class="content-grid">
+                        <!-- Filme 1 - Marvel/Ação -->
+                        <div class="content-card" data-category="acao marvel">
+                            <img src="https://m.media-amazon.com/images/M/MV5BMTc5MDE2ODcwNV5BMl5BanBnXkFtZTgwMzI2NzQ2NzM@._V1_FMjpg_UX1000_.jpg" 
+                                 alt="Vingadores: Ultimato" class="card-poster">
+                            <div class="card-info">
+                                <h4 class="card-title">Vingadores: Ultimato</h4>
+                                <div class="card-meta">
+                                    <span class="card-category">Ação/Aventura</span>
+                                    <span class="card-rating">8.4</span>
+                                </div>
+                                <div class="card-actions">
+                                    <button class="watch-btn" onclick="window.location.href='player-filme-1.html'">
+                                        <i class="bi bi-play-fill"></i> Assistir
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Filme 2 - Ação -->
+                        <div class="content-card" data-category="acao">
+                            <img src="https://m.media-amazon.com/images/M/MV5BMDExZGMyOTMtMDgyYi00NGIwLWJhMTEtOTdkZGFjNmZiMTEwXkEyXkFqcGdeQXVyMjM4NTM5NDY@._V1_FMjpg_UX1000_.jpg" 
+                                 alt="John Wick 4" class="card-poster">
+                            <div class="card-info">
+                                <h4 class="card-title">John Wick 4: Baba Yaga</h4>
+                                <div class="card-meta">
+                                    <span class="card-category">Ação/Thriller</span>
+                                    <span class="card-rating">7.8</span>
+                                </div>
+                                <div class="card-actions">
+                                    <button class="watch-btn" onclick="window.location.href='player-filme-2.html'">
+                                        <i class="bi bi-play-fill"></i> Assistir
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Filme 3 - Marvel -->
+                        <div class="content-card" data-category="marvel">
+                            <img src="https://m.media-amazon.com/images/M/MV5BZWMyYzFjYTYtNTRjYi00OGExLWE2YzgtOGRmYjAxZTU3NzBiXkEyXkFqcGdeQXVyMzQ0MzA0NTM@._V1_FMjpg_UX1000_.jpg" 
+                                 alt="Homem-Aranha: Sem Volta Para Casa" class="card-poster">
+                            <div class="card-info">
+                                <h4 class="card-title">Homem-Aranha: Sem Volta Para Casa</h4>
+                                <div class="card-meta">
+                                    <span class="card-category">Ação/Aventura</span>
+                                    <span class="card-rating">8.2</span>
+                                </div>
+                                <div class="card-actions">
+                                    <button class="watch-btn" onclick="window.location.href='player-filme-3.html'">
+                                        <i class="bi bi-play-fill"></i> Assistir
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Filme 4 - DC -->
+                        <div class="content-card" data-category="dc">
+                            <img src="https://upload.wikimedia.org/wikipedia/pt/3/38/The_Batman_poster.jpg" 
+                                 alt="The Batman" class="card-poster">
+                            <div class="card-info">
+                                <h4 class="card-title">The Batman</h4>
+                                <div class="card-meta">
+                                    <span class="card-category">Ação/Drama</span>
+                                    <span class="card-rating">7.8</span>
+                                </div>
+                                <div class="card-actions">
+                                    <button class="watch-btn" onclick="window.location.href='player-filme-4.html'">
+                                        <i class="bi bi-play-fill"></i> Assistir
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Filme 5 - Ação -->
+                        <div class="content-card" data-category="acao">
+                            <img src="https://br.web.img3.acsta.net/c_310_420/pictures/23/05/16/22/53/0156803.jpg" 
+                                 alt="Velozes e Furiosos 10" class="card-poster">
+                            <div class="card-info">
+                                <h4 class="card-title">Velozes e Furiosos 10</h4>
+                                <div class="card-meta">
+                                    <span class="card-category">Ação/Aventura</span>
+                                    <span class="card-rating">6.0</span>
+                                </div>
+                                <div class="card-actions">
+                                    <button class="watch-btn" onclick="window.location.href='player-filme-5.html'">
+                                        <i class="bi bi-play-fill"></i> Assistir
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Filme 6 - Marvel (Pantera Negra: Wakanda Para Sempre) -->
+                        <div class="content-card" data-category="marvel">
+                            <img src="https://upload.wikimedia.org/wikipedia/pt/3/3b/Black_Panther_Wakanda_Forever_poster.jpg" 
+                                 alt="Pantera Negra: Wakanda Para Sempre" class="card-poster">
+                            <div class="card-info">
+                                <h4 class="card-title">Pantera Negra: Wakanda Para Sempre</h4>
+                                <div class="card-meta">
+                                    <span class="card-category">Ação/Drama</span>
+                                    <span class="card-rating">6.7</span>
+                                </div>
+                                <div class="card-actions">
+                                    <button class="watch-btn" onclick="window.location.href='player-filme-6.html'">
+                                        <i class="bi bi-play-fill"></i> Assistir
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Filme 7 - Aventura -->
+                        <div class="content-card" data-category="aventura">
+                            <img src="https://br.web.img2.acsta.net/pictures/17/11/28/19/03/5043910.jpg" 
+                                 alt="Jumanji: Bem-Vindo à Selva" class="card-poster">
+                            <div class="card-info">
+                                <h4 class="card-title">Jumanji: Bem-Vindo à Selva</h4>
+                                <div class="card-meta">
+                                    <span class="card-category">Aventura/Comédia</span>
+                                    <span class="card-rating">6.9</span>
+                                </div>
+                                <div class="card-actions">
+                                    <button class="watch-btn" onclick="showMessage('Filme disponível em breve')">
+                                        <i class="bi bi-play-fill"></i> Assistir
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Filme 8 - Romance (Diário de uma Paixão) -->
+                        <div class="content-card" data-category="romance">
+                            <img src="https://image.tmdb.org/t/p/w185/A07izLVyZCrmq0HTvFg6qdqiZE5.jpg" 
+                                 alt="Diário de uma Paixão" class="card-poster">
+                            <div class="card-info">
+                                <h4 class="card-title">Diário de uma Paixão</h4>
+                                <div class="card-meta">
+                                    <span class="card-category">Romance/Drama</span>
+                                    <span class="card-rating">7.8</span>
+                                </div>
+                                <div class="card-actions">
+                                    <button class="watch-btn" onclick="window.location.href='player-filme-8.html'">
+                                        <i class="bi bi-play-fill"></i> Assistir
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Filme 9 - DC -->
+                        <div class="content-card" data-category="dc">
+                            <img src="https://m.media-amazon.com/images/M/MV5BYmE2NzBjNGUtNTJiMy00N2UxLWEyYzMtYzFjODFhMGZlOTgzXkEyXkFqcGc@._V1_.jpg" 
+                                 alt="The Flash" class="card-poster">
+                            <div class="card-info">
+                                <h4 class="card-title">The Flash</h4>
+                                <div class="card-meta">
+                                    <span class="card-category">Ação/Ficção</span>
+                                    <span class="card-rating">6.8</span>
+                                </div>
+                                <div class="card-actions">
+                                    <button class="watch-btn" onclick="showMessage('Filme disponível em breve')">
+                                        <i class="bi bi-play-fill"></i> Assistir
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Filme 10 - Terror -->
+                        <div class="content-card" data-category="terror">
+                            <img src="https://m.media-amazon.com/images/S/pv-target-images/785ad514a2dce775e0d7f3bc894daf668d156b5444b821b0a1e4029f7ee4deb3.jpg" 
+                                 alt="Sobrenatural: A Porta Vermelha" class="card-poster">
+                            <div class="card-info">
+                                <h4 class="card-title">Sobrenatural: A Porta Vermelha</h4>
+                                <div class="card-meta">
+                                    <span class="card-category">Terror/Suspense</span>
+                                    <span class="card-rating">6.0</span>
+                                </div>
+                                <div class="card-actions">
+                                    <button class="watch-btn" onclick="showMessage('Filme disponível em breve')">
+                                        <i class="bi bi-play-fill"></i> Assistir
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Filme 11 - Comédia -->
+                        <div class="content-card" data-category="comedia">
+                            <img src="https://m.media-amazon.com/images/M/MV5BY2NhNmY2NDEtMDM5My00YzUxLWI5ZDQtYzE0ZWNjYjlmMzYxXkEyXkFqcGc@._V1_.jpg" 
+                                 alt="Se Beber, Não Case!" class="card-poster">
+                            <div class="card-info">
+                                <h4 class="card-title">Se Beber, Não Case!</h4>
+                                <div class="card-meta">
+                                    <span class="card-category">Comédia</span>
+                                    <span class="card-rating">7.7</span>
+                                </div>
+                                <div class="card-actions">
+                                    <button class="watch-btn" onclick="showMessage('Filme disponível em breve')">
+                                        <i class="bi bi-play-fill"></i> Assistir
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Filme 12 - Ficção Científica -->
+                        <div class="content-card" data-category="ficcao">
+                            <img src="https://upload.wikimedia.org/wikipedia/pt/3/3a/Interstellar_Filme.png" 
+                                 alt="Interestelar" class="card-poster">
+                            <div class="card-info">
+                                <h4 class="card-title">Interestelar</h4>
+                                <div class="card-meta">
+                                    <span class="card-category">Ficção/Drama</span>
+                                    <span class="card-rating">8.6</span>
+                                </div>
+                                <div class="card-actions">
+                                    <button class="watch-btn" onclick="showMessage('Filme disponível em breve')">
+                                        <i class="bi bi-play-fill"></i> Assistir
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Filme 13 - Marvel (Primeiro Pantera Negra - ADICIONADO) -->
+                        <div class="content-card" data-category="marvel">
+                            <img src="https://www.europanet.com.br/image_gen/resizeimg.php?cod_produto=107535" 
+                                 alt="Pantera Negra" class="card-poster">
+                            <div class="card-info">
+                                <h4 class="card-title">Pantera Negra</h4>
+                                <div class="card-meta">
+                                    <span class="card-category">Ação/Aventura</span>
+                                    <span class="card-rating">7.3</span>
+                                </div>
+                                <div class="card-actions">
+                                    <button class="watch-btn" onclick="window.location.href='player-filme-13.html'">
+                                        <i class="bi bi-play-fill"></i> Assistir
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Filme 14 - Romance (La La Land - ADICIONADO) -->
+                        <div class="content-card" data-category="romance">
+                            <img src="https://i5.walmartimages.com/seo/Rolled-Poster-La-La-Land-Movie-24-x-36-Poster_20f02811-01b4-4aea-9bb2-a79942bd2642_1.856c035d66f8fd216f6d933259bc3dfb.jpeg" 
+                                 alt="La La Land" class="card-poster">
+                            <div class="card-info">
+                                <h4 class="card-title">La La Land</h4>
+                                <div class="card-meta">
+                                    <span class="card-category">Romance/Musical</span>
+                                    <span class="card-rating">8.0</span>
+                                </div>
+                                <div class="card-actions">
+                                    <button class="watch-btn" onclick="showMessage('Filme disponível em breve')">
+                                        <i class="bi bi-play-fill"></i> Assistir
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Séries em Destaque -->
+                <div class="section" id="series-destaque">
+                    <div class="section-header">
+                        <h3><i class="bi bi-tv"></i> SÉRIES EM DESTAQUE</h3>
+                        <a href="#" class="view-all">Ver todas <i class="bi bi-arrow-right"></i></a>
+                    </div>
+                    
+                    <div class="content-grid">
+                        <!-- Série 1 - Netflix -->
+                        <div class="content-card" data-category="netflix">
+                            <img src="https://m.media-amazon.com/images/I/81DeWbxJTBL._AC_SL1500_.jpg" 
+                                 alt="Stranger Things" class="card-poster">
+                            <div class="card-info">
+                                <h4 class="card-title">Stranger Things</h4>
+                                <div class="card-meta">
+                                    <span class="card-category">Drama/Ficção</span>
+                                    <span class="card-rating">8.7</span>
+                                </div>
+                                <div class="card-actions">
+                                    <button class="watch-btn" onclick="showMessage('Série disponível em breve')">
+                                        <i class="bi bi-play-fill"></i> Assistir
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Série 2 - HBO -->
+                        <div class="content-card" data-category="hbo">
+                            <img src="https://upload.wikimedia.org/wikipedia/pt/a/a4/Game_of_Thrones_Temporada_1_Poster.jpg?20170613170630" 
+                                 alt="Game of Thrones" class="card-poster">
+                            <div class="card-info">
+                                <h4 class="card-title">Game of Thrones</h4>
+                                <div class="card-meta">
+                                    <span class="card-category">Fantasia/Drama</span>
+                                    <span class="card-rating">9.2</span>
+                                </div>
+                                <div class="card-actions">
+                                    <button class="watch-btn" onclick="showMessage('Série disponível em breve')">
+                                        <i class="bi bi-play-fill"></i> Assistir
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Série 3 - Netflix -->
+                        <div class="content-card" data-category="netflix">
+                            <img src="https://uauposters.com.br/media/catalog/product/4/0/409920210407-uau-posters-the-witcher-series-3.jpg" 
+                                 alt="The Witcher" class="card-poster">
+                            <div class="card-info">
+                                <h4 class="card-title">The Witcher</h4>
+                                <div class="card-meta">
+                                    <span class="card-category">Fantasia/Ação</span>
+                                    <span class="card-rating">8.2</span>
+                                </div>
+                                <div class="card-actions">
+                                    <button class="watch-btn" onclick="showMessage('Série disponível em breve')">
+                                        <i class="bi bi-play-fill"></i> Assistir
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Série 4 - HBO -->
+                        <div class="content-card" data-category="hbo">
+                            <img src="https://m.media-amazon.com/images/M/MV5BZGUzYTI3M2EtZmM0Yy00NGUyLWI4ODEtN2Q3ZGJlYzhhZjU3XkEyXkFqcGdeQXVyNTM0OTY1OQ@@._V1_FMjpg_UX1000_.jpg" 
+                                 alt="The Last of Us" class="card-poster">
+                            <div class="card-info">
+                                <h4 class="card-title">The Last of Us</h4>
+                                <div class="card-meta">
+                                    <span class="card-category">Drama/Ação</span>
+                                    <span class="card-rating">8.8</span>
+                                </div>
+                                <div class="card-actions">
+                                    <button class="watch-btn" onclick="showMessage('Série disponível em breve')">
+                                        <i class="bi bi-play-fill"></i> Assistir
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Série 5 - Netflix -->
+                        <div class="content-card" data-category="netflix">
+                            <img src="https://i5.walmartimages.com/asr/183ce085-097d-4d17-b927-d23a254194a1.b61386f035aea25a4ef77b3623cac29e.jpeg" 
+                                 alt="La Casa de Papel" class="card-poster">
+                            <div class="card-info">
+                                <h4 class="card-title">La Casa de Papel</h4>
+                                <div class="card-meta">
+                                    <span class="card-category">Drama/Crime</span>
+                                    <span class="card-rating">8.3</span>
+                                </div>
+                                <div class="card-actions">
+                                    <button class="watch-btn" onclick="showMessage('Série disponível em breve')">
+                                        <i class="bi bi-play-fill"></i> Assistir
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Série 6 - Disney+ -->
+                        <div class="content-card" data-category="disney">
+                            <img src="https://imusic.b-cdn.net/images/item/original/512/8435497235512.jpg?star-wars-the-mandalorian-poster-61x91-50-cm-merch&class=scaled&v=1621911957" 
+                                 alt="The Mandalorian" class="card-poster">
+                            <div class="card-info">
+                                <h4 class="card-title">The Mandalorian</h4>
+                                <div class="card-meta">
+                                    <span class="card-category">Ficção/Aventura</span>
+                                    <span class="card-rating">8.7</span>
+                                </div>
+                                <div class="card-actions">
+                                    <button class="watch-btn" onclick="showMessage('Série disponível em breve')">
+                                        <i class="bi bi-play-fill"></i> Assistir
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Série 7 - Terror -->
+                        <div class="content-card" data-category="terror">
+                            <img src="https://image.tmdb.org/t/p/original/mQQGdDgn4WpUL9PXssHecWkjfi1.jpg" 
+                                 alt="A Maldição da Residência Hill" class="card-poster">
+                            <div class="card-info">
+                                <h4 class="card-title">A Maldição da Residência Hill</h4>
+                                <div class="card-meta">
+                                    <span class="card-category">Terror/Drama</span>
+                                    <span class="card-rating">8.6</span>
+                                </div>
+                                <div class="card-actions">
+                                    <button class="watch-btn" onclick="showMessage('Série disponível em breve')">
+                                        <i class="bi bi-play-fill"></i> Assistir
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Série 8 - Comédia -->
+                        <div class="content-card" data-category="comedia">
+                            <img src="https://m.media-amazon.com/images/I/615MPacH9qL._AC_UF894,1000_QL80_.jpg" 
+                                 alt="The Office" class="card-poster">
+                            <div class="card-info">
+                                <h4 class="card-title">The Office</h4>
+                                <div class="card-meta">
+                                    <span class="card-category">Comédia</span>
+                                    <span class="card-rating">9.0</span>
+                                </div>
+                                <div class="card-actions">
+                                    <button class="watch-btn" onclick="showMessage('Série disponível em breve')">
+                                        <i class="bi bi-play-fill"></i> Assistir
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Série 9 - Netflix -->
+                        <div class="content-card" data-category="netflix">
+                            <img src="https://image.tmdb.org/t/p/original/6gcHdboppvplmBWxvROc96NJnmm.jpg" 
+                                 alt="Round 6" class="card-poster">
+                            <div class="card-info">
+                                <h4 class="card-title">Round 6</h4>
+                                <div class="card-meta">
+                                    <span class="card-category">Suspense/Drama</span>
+                                    <span class="card-rating">8.0</span>
+                                </div>
+                                <div class="card-actions">
+                                    <button class="watch-btn" onclick="showMessage('Série disponível em breve')">
+                                        <i class="bi bi-play-fill"></i> Assistir
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Série 10 - MARVEL (Loki) -->
+                        <div class="content-card" data-category="marvel">
+                            <img src="https://uauposters.com.br/media/catalog/product/3/8/380420211103-uau-posters-loki-filmes.jpg" 
+                                 alt="Loki" class="card-poster">
+                            <div class="card-info">
+                                <h4 class="card-title">Loki</h4>
+                                <div class="card-meta">
+                                    <span class="card-category">Ficção/Aventura</span>
+                                    <span class="card-rating">8.4</span>
+                                </div>
+                                <div class="card-actions">
+                                    <button class="watch-btn" onclick="showMessage('Série disponível em breve')">
+                                        <i class="bi bi-play-fill"></i> Assistir
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Série 11 - HBO -->
+                        <div class="content-card" data-category="hbo">
+                            <img src="https://m.media-amazon.com/images/I/91cO3KCMA2L.jpg" 
+                                 alt="Succession" class="card-poster">
+                            <div class="card-info">
+                                <h4 class="card-title">Succession</h4>
+                                <div class="card-meta">
+                                    <span class="card-category">Drama</span>
+                                    <span class="card-rating">8.8</span>
+                                </div>
+                                <div class="card-actions">
+                                    <button class="watch-btn" onclick="showMessage('Série disponível em breve')">
+                                        <i class="bi bi-play-fill"></i> Assistir
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Série 12 - Netflix -->
+                        <div class="content-card" data-category="netflix">
+                            <img src="https://br.web.img3.acsta.net/pictures/20/11/04/11/32/4052345.jpg" 
+                                 alt="Bridgerton" class="card-poster">
+                            <div class="card-info">
+                                <h4 class="card-title">Bridgerton</h4>
+                                <div class="card-meta">
+                                    <span class="card-category">Romance/Drama</span>
+                                    <span class="card-rating">7.4</span>
+                                </div>
+                                <div class="card-actions">
+                                    <button class="watch-btn" onclick="showMessage('Série disponível em breve')">
+                                        <i class="bi bi-play-fill"></i> Assistir
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <p><strong>IPTV DO ASAFE</strong> - Desenvolvido para uso pessoal</p>
+            <p>© 2025 Todos os direitos reservados | Conteúdo para fins educacionais</p>
+            <p style="font-size: 0.8rem; color: #888; margin-top: 10px;">
+                Este conteúdo é disponibilizado apenas para uso pessoal. Não distribuímos conteúdo protegido por direitos autorais.
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        // Elementos DOM
+        const searchInput = document.getElementById('navbarSearch');
+        let currentCategory = 'destaques';
+        
+        // Inicialização
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('Filmes e Séries - Página carregada com sucesso!');
+            
+            // Inicializar barra de busca
+            initializeSearch();
+            
+            // Configurar botão voltar ao topo
+            setupBackToTop();
+            
+            // Configurar filtro por categoria
+            setupCategoryFilter();
+            
+            // Scroll suave para âncoras
+            setupSmoothScroll();
+            
+            // Animar cards ao carregar
+            animateCards();
+        });
+        
+        // Função para rolar para o topo
+        function scrollToTop() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        }
+        
+        // Inicializar sistema de busca
+        function initializeSearch() {
+            // Busca ao pressionar Enter
+            searchInput.addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') {
+                    performSearch();
+                }
+            });
+            
+            // Busca em tempo real
+            searchInput.addEventListener('input', function() {
+                if (this.value.length >= 2) {
+                    performSearch();
+                } else if (this.value.length === 0) {
+                    clearSearchResults();
+                }
+            });
+            
+            // Tecla Escape para limpar busca
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape') {
+                    clearSearchResults();
+                    searchInput.value = '';
+                }
+            });
+        }
+        
+        // Função de busca
+        function handleSearch() {
+            const searchTerm = searchInput.value.trim();
+            if (searchTerm) {
+                performSearch();
+            }
+        }
+        
+        // Realizar busca
+        function performSearch() {
+            const searchTerm = searchInput.value.trim().toLowerCase();
+            
+            if (!searchTerm || searchTerm.length < 2) {
+                clearSearchResults();
+                return;
+            }
+            
+            // Criar ou obter container de resultados
+            let resultsContainer = document.querySelector('.search-results-container');
+            if (!resultsContainer) {
+                resultsContainer = document.createElement('div');
+                resultsContainer.className = 'search-results-container';
+                searchInput.parentNode.appendChild(resultsContainer);
+            }
+            
+            // Coletar todos os cards de TODAS as seções
+            const cards = document.querySelectorAll('.content-card');
+            let resultsHTML = '';
+            let foundResults = false;
+            
+            cards.forEach(card => {
+                const title = card.querySelector('.card-title').textContent;
+                const category = card.querySelector('.card-category').textContent;
+                const button = card.querySelector('.watch-btn');
+                const onClick = button.getAttribute('onclick');
+                const link = onClick.includes('location.href') ? 
+                    onClick.match(/location\.href='([^']+)'/)?.[1] || '#' : 
+                    '#';
+                
+                if (title.toLowerCase().includes(searchTerm) || 
+                    category.toLowerCase().includes(searchTerm)) {
+                    
+                    foundResults = true;
+                    const isMovie = !category.includes('Série');
+                    const type = isMovie ? 'Filme' : 'Série';
+                    const badgeColor = isMovie ? '#ffc107' : '#0dcaf0';
+                    
+                    resultsHTML += `
+                        <div class="search-result-item">
+                            <a href="${link}" class="d-block" onclick="${onClick}; return false;">
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <div>
+                                        <strong>${title}</strong>
+                                        <div class="small text-muted">${category} • ${type}</div>
+                                    </div>
+                                    <span class="badge" style="background-color: ${badgeColor}; color: #000;">${type}</span>
+                                </div>
+                            </a>
+                        </div>
+                    `;
+                }
+            });
+            
+            // Adicionar resultados padrão
+            const defaultResults = [
+                {title: "Vingadores: Ultimato", category: "Ação/Aventura", type: "Filme", link: "player-filme-1.html"},
+                {title: "John Wick 4: Baba Yaga", category: "Ação/Thriller", type: "Filme", link: "player-filme-2.html"},
+                {title: "Stranger Things", category: "Drama/Ficção", type: "Série", link: "#"},
+                {title: "Game of Thrones", category: "Fantasia/Drama", type: "Série", link: "#"}
+            ];
+            
+            defaultResults.forEach(item => {
+                if (item.title.toLowerCase().includes(searchTerm) || 
+                    item.category.toLowerCase().includes(searchTerm)) {
+                    
+                    if (!foundResults) foundResults = true;
+                    const badgeColor = item.type === 'Filme' ? '#ffc107' : '#0dcaf0';
+                    
+                    resultsHTML += `
+                        <div class="search-result-item">
+                            <a href="${item.link}" class="d-block">
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <div>
+                                        <strong>${item.title}</strong>
+                                        <div class="small text-muted">${item.category} • ${item.type}</div>
+                                    </div>
+                                    <span class="badge" style="background-color: ${badgeColor}; color: #000;">${item.type}</span>
+                                </div>
+                            </a>
+                        </div>
+                    `;
+                }
+            });
+            
+            if (!foundResults) {
+                resultsHTML = '<div class="no-results">Nenhum resultado encontrado</div>';
+            } else {
+                resultsHTML = `<div class="search-header">
+                                <small class="text-muted">Resultados da busca:</small>
+                              </div>` + resultsHTML;
+            }
+            
+            resultsContainer.innerHTML = resultsHTML;
+            resultsContainer.classList.add('show');
+            
+            // Fechar resultados ao clicar fora
+            setTimeout(() => {
+                document.addEventListener('click', closeSearchResults);
+            }, 100);
+        }
+        
+        // Limpar resultados da busca
+        function clearSearchResults() {
+            const resultsContainer = document.querySelector('.search-results-container');
+            if (resultsContainer) {
+                resultsContainer.classList.remove('show');
+                resultsContainer.innerHTML = '';
+            }
+        }
+        
+        // Fechar resultados da busca
+        function closeSearchResults(e) {
+            const resultsContainer = document.querySelector('.search-results-container');
+            
+            if (resultsContainer && !resultsContainer.contains(e.target) && e.target !== searchInput) {
+                resultsContainer.classList.remove('show');
+                document.removeEventListener('click', closeSearchResults);
+            }
+        }
+        
+        // Configurar filtro por categoria
+        function setupCategoryFilter() {
+            const categoryButtons = document.querySelectorAll('.category-btn');
+            
+            categoryButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    // Remover classe active de todos os botões
+                    categoryButtons.forEach(btn => btn.classList.remove('active'));
+                    
+                    // Adicionar classe active ao botão clicado
+                    this.classList.add('active');
+                    
+                    // Obter categoria selecionada
+                    currentCategory = this.dataset.category;
+                    
+                    // Filtrar conteúdo
+                    filterContentByCategory(currentCategory);
+                    
+                    // Rolagem suave para o topo
+                    scrollToTop();
+                });
+            });
+        }
+        
+        // Filtrar conteúdo por categoria
+        function filterContentByCategory(category) {
+            const allCards = document.querySelectorAll('.content-card');
+            const sections = document.querySelectorAll('.section');
+            const sectionHeaders = document.querySelectorAll('.section-header');
+            
+            if (category === 'destaques') {
+                // Mostrar tudo
+                allCards.forEach(card => {
+                    card.style.display = 'block';
+                });
+                sections.forEach(section => {
+                    section.style.display = 'block';
+                });
+                sectionHeaders.forEach(header => {
+                    header.style.display = 'flex';
+                });
+                return;
+            }
+            
+            // Manter TODAS as seções visíveis
+            sections.forEach(section => {
+                section.style.display = 'block';
+            });
+            
+            sectionHeaders.forEach(header => {
+                header.style.display = 'flex';
+            });
+            
+            // Esconder apenas cards que não pertencem à categoria
+            allCards.forEach(card => {
+                const cardCategories = card.dataset.category.split(' ');
+                if (cardCategories.includes(category)) {
+                    card.style.display = 'block';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+            
+            // Se nenhum card for encontrado, mostrar mensagem
+            const visibleCards = Array.from(allCards).filter(card => 
+                card.style.display !== 'none'
+            );
+            
+            if (visibleCards.length === 0) {
+                showMessage(`Nenhum conteúdo encontrado na categoria "${category}"`);
+            }
+        }
+        
+        // Botão para voltar ao topo
+        function setupBackToTop() {
+            const backToTopBtn = document.createElement('button');
+            backToTopBtn.className = 'back-to-top';
+            backToTopBtn.innerHTML = '<i class="bi bi-chevron-up"></i>';
+            backToTopBtn.title = 'Voltar ao topo';
+            backToTopBtn.onclick = scrollToTop;
+            
+            document.body.appendChild(backToTopBtn);
+            
+            window.addEventListener('scroll', function() {
+                if (window.pageYOffset > 300) {
+                    backToTopBtn.classList.add('visible');
+                } else {
+                    backToTopBtn.classList.remove('visible');
+                }
+            });
+        }
+        
+        // Scroll suave para âncoras
+        function setupSmoothScroll() {
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    const targetId = this.getAttribute('href');
+                    if (targetId === '#' || targetId === '#!') return;
+                    
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        e.preventDefault();
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 80,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+        }
+        
+        // Animar cards
+        function animateCards() {
+            const cards = document.querySelectorAll('.content-card');
+            cards.forEach((card, index) => {
+                card.style.animationDelay = `${(index % 4) * 0.1}s`;
+            });
+        }
+        
+        // Função para mostrar mensagens
+        function showMessage(message) {
+            // Criar elemento de mensagem
+            const messageEl = document.createElement('div');
+            messageEl.style.cssText = `
+                position: fixed;
+                top: 100px;
+                right: 20px;
+                background: rgba(40, 40, 40, 0.95);
+                color: white;
+                padding: 15px 20px;
+                border-radius: 8px;
+                border-left: 4px solid #dc3545;
+                z-index: 10000;
+                animation: slideIn 0.3s ease;
+                max-width: 300px;
+                box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            `;
+            
+            messageEl.innerHTML = `
+                <div style="display: flex; align-items: center; gap: 10px;">
+                    <i class="bi bi-info-circle" style="color: #dc3545;"></i>
+                    <span>${message}</span>
+                </div>
+            `;
+            
+            document.body.appendChild(messageEl);
+            
+            // Remover após 3 segundos
+            setTimeout(() => {
+                messageEl.style.animation = 'slideOut 0.3s ease';
+                setTimeout(() => messageEl.remove(), 300);
+            }, 3000);
+        }
+        
+        // Teclas de atalho
+        document.addEventListener('keydown', function(e) {
+            // Ctrl+F para focar na busca
+            if ((e.ctrlKey && e.key === 'f') || e.key === '/') {
+                if (!e.target.matches('input, textarea')) {
+                    e.preventDefault();
+                    searchInput.focus();
+                    searchInput.select();
+                }
+            }
+            
+            // ESC para limpar busca
+            if (e.key === 'Escape') {
+                clearSearchResults();
+                searchInput.value = '';
+                searchInput.blur();
+            }
+            
+            // Números para categorias (1-9)
+            if (e.key >= '1' && e.key <= '9' && !e.ctrlKey) {
+                const categoryButtons = document.querySelectorAll('.category-btn');
+                const index = parseInt(e.key) - 1;
+                if (categoryButtons[index]) {
+                    e.preventDefault();
+                    categoryButtons[index].click();
+                }
+            }
+            
+            // V para Vingadores
+            if (e.key === 'v' || e.key === 'V') {
+                if (!e.target.matches('input, textarea')) {
+                    window.location.href = 'player-filme-1.html';
+                }
+            }
+            
+            // J para John Wick
+            if (e.key === 'j' || e.key === 'J') {
+                if (!e.target.matches('input, textarea')) {
+                    window.location.href = 'player-filme-2.html';
+                }
+            }
+        });
+        
+        // Inicialização
+        window.onload = function() {
+            console.log('Página Filmes e Séries carregada');
+            showMessage('Dicas: Ctrl+F = Buscar | 1-9 = Categorias | V = Vingadores | J = John Wick');
+            
+            // Fade in da página
+            document.body.style.opacity = '0';
+            document.body.style.transition = 'opacity 0.3s ease';
+            setTimeout(() => {
+                document.body.style.opacity = '1';
+            }, 100);
+        };
+    </script>
+</body>
+</html>

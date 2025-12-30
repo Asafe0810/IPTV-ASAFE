@@ -1,0 +1,708 @@
+/* CSS Personalizado - IPTV DO ASAFE */
+
+/* Variáveis CSS */
+:root {
+    --primary-color: #dc3545;
+    --dark-color: #1a1a1a;
+    --light-color: #f8f9fa;
+    --nba-color: #552583;
+    --futebol-color: #198754;
+    --filmes-color: #6f42c1;
+}
+
+/* Estilos Gerais */
+body {
+    background: linear-gradient(135deg, #0f0f0f 0%, #1a1a1a 100%);
+    color: #fff;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    padding-top: 76px; /* Compensar navbar fixa */
+    min-height: 100vh;
+}
+
+/* Hero Section */
+.hero-section {
+    background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.9)),
+                url('https://images.unsplash.com/photo-1551958219-acbc608c6377?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');
+    background-size: cover;
+    background-position: center;
+    padding: 80px 0 50px;
+    margin-bottom: 50px;
+    border-bottom: 3px solid var(--primary-color);
+}
+
+.hero-section h1 {
+    font-size: 3.5rem;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+    background: linear-gradient(90deg, #ff0000, #ffff00, #00ff00, #00ffff, #0000ff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.hero-section .lead {
+    font-size: 1.5rem;
+    opacity: 0.9;
+}
+
+/* Stats Cards */
+.stats-card {
+    background: rgba(40, 40, 40, 0.9);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 15px;
+    transition: all 0.3s ease;
+    height: 100%;
+    text-align: center;
+    padding: 20px;
+}
+
+.stats-card:hover {
+    transform: translateY(-10px);
+    border-color: var(--primary-color);
+    box-shadow: 0 10px 20px rgba(220, 53, 69, 0.3);
+}
+
+.stats-card i {
+    transition: transform 0.3s ease;
+}
+
+.stats-card:hover i {
+    transform: scale(1.2);
+}
+
+/* Navbar */
+.navbar {
+    background: rgba(26, 26, 26, 0.95) !important;
+    backdrop-filter: blur(10px);
+    border-bottom: 2px solid var(--primary-color);
+    box-shadow: 0 2px 15px rgba(220, 53, 69, 0.3);
+}
+
+.navbar-brand {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.nav-link {
+    font-size: 1.1rem;
+    margin: 0 5px;
+    padding: 8px 15px !important;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+}
+
+.nav-link:hover {
+    background-color: var(--primary-color);
+    transform: translateY(-2px);
+}
+
+.nav-link.active {
+    background-color: var(--primary-color);
+}
+
+/* Section Titles */
+.section-title {
+    color: #fff;
+    margin-bottom: 30px;
+    padding-bottom: 15px;
+    border-bottom: 2px solid var(--primary-color);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.live-badge {
+    background: #ff0000;
+    color: white;
+    padding: 3px 10px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+    0% { opacity: 1; }
+    50% { opacity: 0.7; }
+    100% { opacity: 1; }
+}
+
+/* Cards */
+.card {
+    background: rgba(40, 40, 40, 0.9);
+    border: 1px solid rgba(220, 53, 69, 0.3);
+    border-radius: 10px;
+    transition: all 0.3s ease;
+    overflow: hidden;
+    backdrop-filter: blur(10px);
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(220, 53, 69, 0.4);
+    border-color: var(--primary-color);
+}
+
+.game-card .card-header {
+    font-weight: bold;
+    text-align: center;
+}
+
+/* About Card */
+.about-card {
+    border: 2px solid var(--primary-color);
+}
+
+.about-card .profile-circle {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--primary-color), #ff6b6b);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+    border: 5px solid rgba(255, 255, 255, 0.1);
+}
+
+.features-list {
+    list-style: none;
+    padding-left: 0;
+}
+
+.features-list li {
+    padding: 5px 0;
+    font-size: 1.1rem;
+}
+
+.features-list i {
+    margin-right: 10px;
+}
+
+/* Teams Display */
+.teams {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin: 20px 0;
+}
+
+.team {
+    text-align: center;
+    flex: 1;
+}
+
+.team-logo {
+    width: 60px;
+    height: 60px;
+    object-fit: contain;
+    margin-bottom: 10px;
+}
+
+.vs {
+    font-weight: bold;
+    color: var(--primary-color);
+    font-size: 1.5rem;
+    margin: 0 20px;
+}
+
+/* Botões Específicos */
+.btn-nba {
+    background: linear-gradient(90deg, #552583 0%, #FDB927 100%);
+    color: white;
+    border: none;
+    padding: 8px 20px;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+}
+
+.btn-nba:hover {
+    transform: scale(1.05);
+    color: white;
+    box-shadow: 0 5px 15px rgba(85, 37, 131, 0.4);
+}
+
+.btn-danger {
+    background: linear-gradient(90deg, #dc3545 0%, #bb2d3b 100%);
+    border: none;
+    padding: 10px 30px;
+    font-weight: bold;
+    transition: all 0.3s ease;
+}
+
+.btn-danger:hover {
+    transform: scale(1.05);
+    box-shadow: 0 5px 15px rgba(220, 53, 69, 0.4);
+}
+
+/* Estilos para Filmes */
+.movie-card {
+    border: none;
+    background: rgba(40, 40, 40, 0.9);
+    transition: all 0.3s ease;
+    height: 100%;
+}
+
+.movie-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(220, 53, 69, 0.3);
+}
+
+.movie-poster {
+    position: relative;
+    overflow: hidden;
+    border-radius: 8px 8px 0 0;
+}
+
+.movie-poster img {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.movie-card:hover .movie-poster img {
+    transform: scale(1.1);
+}
+
+.movie-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.movie-card:hover .movie-overlay {
+    opacity: 1;
+}
+
+.btn-play {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: var(--primary-color);
+    border: none;
+    color: white;
+    font-size: 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+}
+
+.btn-play:hover {
+    transform: scale(1.1);
+    background: #ff0000;
+}
+
+.movie-rating {
+    margin-top: 10px;
+    font-size: 0.9rem;
+}
+
+/* Botão para voltar ao topo */
+.back-to-top {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 50px;
+    height: 50px;
+    background: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    cursor: pointer;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    z-index: 1000;
+}
+
+.back-to-top.visible {
+    opacity: 1;
+    visibility: visible;
+}
+
+.back-to-top:hover {
+    background: #ff0000;
+    transform: translateY(-5px);
+}
+
+/* Melhorias para cards de jogos */
+.game-card .card-body {
+    padding: 20px;
+}
+
+.game-card .btn {
+    margin-top: 10px;
+    min-width: 120px;
+}
+
+/* Responsividade para filmes */
+@media (max-width: 768px) {
+    .movie-poster img {
+        height: 250px;
+    }
+    
+    .movie-card {
+        margin-bottom: 20px;
+    }
+}
+
+/* Barra de pesquisa na navbar */
+.search-container {
+    flex: 1;
+    max-width: 400px;
+}
+
+.search-container .input-group {
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+.search-container .form-control {
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: white;
+}
+
+.search-container .form-control:focus {
+    background: rgba(255, 255, 255, 0.15);
+    border-color: var(--primary-color);
+    color: white;
+    box-shadow: 0 0 0 0.25rem rgba(220, 53, 69, 0.25);
+}
+
+.search-container .form-control::placeholder {
+    color: rgba(255, 255, 255, 0.6);
+}
+
+/* Resultados da busca */
+.search-results-container {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: rgba(40, 40, 40, 0.95);
+    border: 1px solid var(--primary-color);
+    border-radius: 0 0 8px 8px;
+    max-height: 400px;
+    overflow-y: auto;
+    display: none;
+    z-index: 1000;
+    backdrop-filter: blur(10px);
+}
+
+.search-results-container.show {
+    display: block;
+}
+
+.search-result-item {
+    padding: 10px 15px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    transition: background 0.3s ease;
+}
+
+.search-result-item:hover {
+    background: rgba(220, 53, 69, 0.1);
+}
+
+.search-result-item a {
+    color: white;
+    text-decoration: none;
+}
+
+.search-result-item:hover a {
+    color: var(--primary-color);
+}
+
+.search-result-item .badge {
+    font-size: 0.7rem;
+}
+
+.no-results {
+    padding: 20px;
+    text-align: center;
+    color: rgba(255, 255, 255, 0.6);
+}
+
+/* Remover seção de filmes da página principal (agora tem página separada) */
+#filmes {
+    display: none;
+}
+
+/* Responsividade para barra de busca */
+@media (max-width: 992px) {
+    .search-container {
+        max-width: 300px;
+    }
+}
+
+@media (max-width: 768px) {
+    .search-container {
+        max-width: 100%;
+        margin: 10px 0;
+    }
+    
+    .search-results-container {
+        position: fixed;
+        top: 76px;
+        left: 15px;
+        right: 15px;
+    }
+}
+
+/* Footer */
+footer {
+    border-top: 2px solid var(--primary-color);
+    margin-top: 50px;
+}
+
+/* Scroll Suave */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Barra de pesquisa na navbar */
+.search-container {
+    flex: 1;
+    max-width: 400px;
+    position: relative;
+}
+
+.search-container .input-group {
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+.search-container .form-control {
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: white;
+    padding: 8px 12px;
+}
+
+.search-container .form-control:focus {
+    background: rgba(255, 255, 255, 0.15);
+    border-color: var(--primary-color);
+    color: white;
+    box-shadow: 0 0 0 0.25rem rgba(220, 53, 69, 0.25);
+}
+
+.search-container .form-control::placeholder {
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.search-container .btn {
+    padding: 8px 15px;
+}
+
+/* Resultados da busca */
+.search-results-container {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: rgba(40, 40, 40, 0.98);
+    border: 1px solid var(--primary-color);
+    border-radius: 0 0 8px 8px;
+    max-height: 400px;
+    overflow-y: auto;
+    display: none;
+    z-index: 1000;
+    backdrop-filter: blur(10px);
+    margin-top: 1px;
+}
+
+.search-results-container.show {
+    display: block;
+}
+
+.search-result-item {
+    padding: 10px 15px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    transition: background 0.3s ease;
+}
+
+.search-result-item:hover {
+    background: rgba(220, 53, 69, 0.1);
+}
+
+.search-result-item a {
+    color: white;
+    text-decoration: none;
+}
+
+.search-result-item:hover a {
+    color: var(--primary-color);
+}
+
+.search-result-item .badge {
+    font-size: 0.7rem;
+}
+
+.search-header {
+    background: rgba(0, 0, 0, 0.2);
+    padding: 8px 15px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.no-results {
+    padding: 20px;
+    text-align: center;
+    color: rgba(255, 255, 255, 0.6);
+}
+
+/* Botão Ver Mais */
+.btn-outline-light {
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    padding: 10px 30px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.btn-outline-light:hover {
+    border-color: var(--primary-color);
+    background: var(--primary-color);
+    transform: translateY(-3px);
+}
+
+/* Cards de filmes/séries na página principal */
+#filmes-series .movie-card {
+    height: 100%;
+    transition: all 0.3s ease;
+}
+
+#filmes-series .movie-card:hover {
+    transform: translateY(-10px);
+}
+
+.movie-poster {
+    position: relative;
+    overflow: hidden;
+    border-radius: 8px 8px 0 0;
+    height: 250px;
+}
+
+.movie-poster img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.movie-card:hover .movie-poster img {
+    transform: scale(1.1);
+}
+
+.movie-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.movie-card:hover .movie-overlay {
+    opacity: 1;
+}
+
+.btn-play {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: var(--primary-color);
+    border: none;
+    color: white;
+    font-size: 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.btn-play:hover {
+    transform: scale(1.1);
+    background: #ff0000;
+}
+
+/* Botão voltar ao topo melhorado */
+.back-to-top {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 50px;
+    height: 50px;
+    background: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    cursor: pointer;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    z-index: 1000;
+    box-shadow: 0 4px 15px rgba(220, 53, 69, 0.4);
+}
+
+.back-to-top.visible {
+    opacity: 1;
+    visibility: visible;
+}
+
+.back-to-top:hover {
+    background: #ff0000;
+    transform: translateY(-5px);
+}
+
+/* Responsividade */
+@media (max-width: 992px) {
+    .search-container {
+        max-width: 300px;
+    }
+    
+    .movie-poster {
+        height: 200px;
+    }
+}
+
+@media (max-width: 768px) {
+    .search-container {
+        max-width: 100%;
+        margin: 10px 0;
+    }
+    
+    .search-results-container {
+        position: fixed;
+        top: 76px;
+        left: 15px;
+        right: 15px;
+        max-height: 70vh;
+    }
+    
+    .movie-poster {
+        height: 180px;
+    }
+    
+    .hero-section .row > div {
+        margin-bottom: 15px;
+    }
+}

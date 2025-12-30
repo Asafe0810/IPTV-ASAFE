@@ -1,0 +1,673 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IPTV DO ASAFE - Transmissões Ao Vivo</title>
+    <!-- Bootstrap 5 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
+    <!-- CSS Personalizado -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="#" onclick="scrollToTop()">
+                <i class="bi bi-tv"></i> <strong>IPTV DO ASAFE</strong>
+            </a>
+            
+            <!-- Search Bar -->
+            <div class="search-container mx-3 d-none d-lg-flex">
+                <div class="input-group input-group-sm">
+                    <input type="text" class="form-control" placeholder="Buscar jogo ou filme..." id="navbarSearch">
+                    <button class="btn btn-danger" type="button" onclick="performSearch()">
+                        <i class="bi bi-search"></i>
+                    </button>
+                </div>
+            </div>
+            
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <!-- Search Bar Mobile -->
+                <div class="d-lg-none my-3">
+                    <div class="input-group">
+                        <input type="text" class="form-control" placeholder="Buscar jogo ou filme..." id="navbarSearchMobile">
+                        <button class="btn btn-danger" type="button" onclick="performSearch()">
+                            <i class="bi bi-search"></i>
+                        </button>
+                    </div>
+                </div>
+                
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#futebol">
+                            <i class="bi bi-controller"></i> Futebol
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#nba">
+                            <i class="bi bi-basketball"></i> NBA
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#filmes-series">
+                            <i class="bi bi-film"></i> Filmes/Series
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#sobre">
+                            <i class="bi bi-info-circle"></i> Info
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-section text-center">
+        <div class="container">
+            <h1 class="display-4 fw-bold mb-3">🛰️ IPTV DO ASAFE</h1>
+            <p class="lead mb-4">Transmissões ao vivo em HD | Futebol • NBA • Filmes • Series</p>
+            <div class="row justify-content-center mt-4">
+                <div class="col-md-3">
+                    <div class="card stats-card">
+                        <div class="card-body">
+                            <i class="bi bi-play-circle display-6 text-danger"></i>
+                            <h5 class="mt-3">Ao Vivo 24h</h5>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="card stats-card">
+                        <div class="card-body">
+                            <i class="bi bi-hd display-6 text-primary"></i>
+                            <h5 class="mt-3">Qualidade HD</h5>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="card stats-card">
+                        <div class="card-body">
+                            <i class="bi bi-shield-check display-6 text-success"></i>
+                            <h5 class="mt-3">Sem Pop-ups</h5>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="card stats-card">
+                        <div class="card-body">
+                            <i class="bi bi-collection-play display-6 text-warning"></i>
+                            <h5 class="mt-3">+100 Conteúdos</h5>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Conteúdo Principal -->
+    <main class="container py-5">
+        <!-- Futebol -->
+        <section id="futebol" class="mb-5">
+            <h2 class="section-title">
+                <i class="bi bi-controller"></i> Futebol Ao Vivo
+                <span class="live-badge">LIVE</span>
+            </h2>
+            <div class="row g-4">
+                <!-- Jogo 1 -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="card game-card" data-category="futebol" data-teams="Flamengo Palmeiras">
+                        <div class="card-header bg-danger text-white">
+                            <small>CAMPEONATO BRASILEIRO</small>
+                        </div>
+                        <div class="card-body text-center">
+                            <div class="teams">
+                                <div class="team">
+                                    <img src="https://cdn-icons-png.flaticon.com/512/919/919826.png" alt="Flamengo" class="team-logo">
+                                    <h5>Flamengo</h5>
+                                </div>
+                                <div class="vs">VS</div>
+                                <div class="team">
+                                    <img src="https://cdn-icons-png.flaticon.com/512/919/919842.png" alt="Palmeiras" class="team-logo">
+                                    <h5>Palmeiras</h5>
+                                </div>
+                            </div>
+                            <p class="text-muted mt-3">
+                                <i class="bi bi-clock"></i> 21:30 | Ao Vivo
+                            </p>
+                            <a href="player-futebol-1.html" class="btn btn-outline-danger" target="_blank">
+                                <i class="bi bi-play-fill"></i> Assistir
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Jogo 2 -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="card game-card" data-category="futebol" data-teams="Liverpool Man City">
+                        <div class="card-header bg-primary text-white">
+                            <small>PREMIER LEAGUE</small>
+                        </div>
+                        <div class="card-body text-center">
+                            <div class="teams">
+                                <div class="team">
+                                    <img src="https://cdn-icons-png.flaticon.com/512/919/919847.png" alt="Liverpool" class="team-logo">
+                                    <h5>Liverpool</h5>
+                                </div>
+                                <div class="vs">VS</div>
+                                <div class="team">
+                                    <img src="https://cdn-icons-png.flaticon.com/512/919/919854.png" alt="Man City" class="team-logo">
+                                    <h5>Man City</h5>
+                                </div>
+                            </div>
+                            <p class="text-muted mt-3">
+                                <i class="bi bi-clock"></i> 17:00 | Ao Vivo
+                            </p>
+                            <a href="player-futebol-2.html" class="btn btn-outline-primary" target="_blank">
+                                <i class="bi bi-play-fill"></i> Assistir
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Jogo 3 -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="card game-card" data-category="futebol" data-teams="Barcelona Real Madrid">
+                        <div class="card-header bg-warning text-dark">
+                            <small>LA LIGA</small>
+                        </div>
+                        <div class="card-body text-center">
+                            <div class="teams">
+                                <div class="team">
+                                    <img src="https://cdn-icons-png.flaticon.com/512/2583/2583434.png" alt="Barcelona" class="team-logo">
+                                    <h5>Barcelona</h5>
+                                </div>
+                                <div class="vs">VS</div>
+                                <div class="team">
+                                    <img src="https://cdn-icons-png.flaticon.com/512/2583/2583435.png" alt="Real Madrid" class="team-logo">
+                                    <h5>Real Madrid</h5>
+                                </div>
+                            </div>
+                            <p class="text-muted mt-3">
+                                <i class="bi bi-clock"></i> 16:00 | Ao Vivo
+                            </p>
+                            <a href="player-futebol-3.html" class="btn btn-outline-warning" target="_blank">
+                                <i class="bi bi-play-fill"></i> Assistir
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Jogo 4 -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="card game-card" data-category="futebol" data-teams="Bayern PSG">
+                        <div class="card-header bg-success text-white">
+                            <small>CHAMPIONS LEAGUE</small>
+                        </div>
+                        <div class="card-body text-center">
+                            <div class="teams">
+                                <div class="team">
+                                    <img src="https://cdn-icons-png.flaticon.com/512/2583/2583329.png" alt="Bayern" class="team-logo">
+                                    <h5>Bayern</h5>
+                                </div>
+                                <div class="vs">VS</div>
+                                <div class="team">
+                                    <img src="https://cdn-icons-png.flaticon.com/512/2583/2583316.png" alt="PSG" class="team-logo">
+                                    <h5>PSG</h5>
+                                </div>
+                            </div>
+                            <p class="text-muted mt-3">
+                                <i class="bi bi-clock"></i> 20:00 | Ao Vivo
+                            </p>
+                            <a href="player-futebol-4.html" class="btn btn-outline-success" target="_blank">
+                                <i class="bi bi-play-fill"></i> Assistir
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Jogo 5 -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="card game-card" data-category="futebol" data-teams="Corinthians São Paulo">
+                        <div class="card-header bg-info text-white">
+                            <small>LIBERTADORES</small>
+                        </div>
+                        <div class="card-body text-center">
+                            <div class="teams">
+                                <div class="team">
+                                    <img src="https://cdn-icons-png.flaticon.com/512/919/919823.png" alt="Corinthians" class="team-logo">
+                                    <h5>Corinthians</h5>
+                                </div>
+                                <div class="vs">VS</div>
+                                <div class="team">
+                                    <img src="https://cdn-icons-png.flaticon.com/512/919/919836.png" alt="São Paulo" class="team-logo">
+                                    <h5>São Paulo</h5>
+                                </div>
+                            </div>
+                            <p class="text-muted mt-3">
+                                <i class="bi bi-clock"></i> 19:30 | Ao Vivo
+                            </p>
+                            <a href="player-futebol-5.html" class="btn btn-outline-info" target="_blank">
+                                <i class="bi bi-play-fill"></i> Assistir
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Jogo 6 -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="card game-card" data-category="futebol" data-teams="Juventus Inter Milan">
+                        <div class="card-header bg-secondary text-white">
+                            <small>SERIE A ITALIA</small>
+                        </div>
+                        <div class="card-body text-center">
+                            <div class="teams">
+                                <div class="team">
+                                    <img src="https://cdn-icons-png.flaticon.com/512/2583/2583314.png" alt="Juventus" class="team-logo">
+                                    <h5>Juventus</h5>
+                                </div>
+                                <div class="vs">VS</div>
+                                <div class="team">
+                                    <img src="https://cdn-icons-png.flaticon.com/512/2583/2583326.png" alt="Inter" class="team-logo">
+                                    <h5>Inter Milan</h5>
+                                </div>
+                            </div>
+                            <p class="text-muted mt-3">
+                                <i class="bi bi-clock"></i> 18:45 | Ao Vivo
+                            </p>
+                            <a href="player-futebol-6.html" class="btn btn-outline-secondary" target="_blank">
+                                <i class="bi bi-play-fill"></i> Assistir
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- NBA -->
+        <section id="nba" class="mb-5">
+            <h2 class="section-title">
+                <i class="bi bi-basketball"></i> NBA Ao Vivo
+                <span class="live-badge">LIVE</span>
+            </h2>
+            <div class="row g-4">
+                <!-- Jogo NBA 1 -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="card game-card" data-category="nba" data-teams="LA Lakers Golden State">
+                        <div class="card-header" style="background: linear-gradient(90deg, #552583 0%, #FDB927 100%); color: white;">
+                            <small>NBA REGULAR SEASON</small>
+                        </div>
+                        <div class="card-body text-center">
+                            <div class="teams">
+                                <div class="team">
+                                    <img src="https://cdn-icons-png.flaticon.com/512/2583/2583068.png" alt="Lakers" class="team-logo">
+                                    <h5>Charlotte Hornets</h5>
+                                </div>
+                                <div class="vs">VS</div>
+                                <div class="team">
+                                    <img src="https://cdn-icons-png.flaticon.com/512/2583/2583303.png" alt="Warriors" class="team-logo">
+                                    <h5>Milwaukee Bucks</h5>
+                                </div>
+                            </div>
+                            <p class="text-muted mt-3">
+                                <i class="bi bi-clock"></i> 23:30 | Ao Vivo
+                            </p>
+                            <a href="player-nba-1.html" class="btn btn-nba" target="_blank">
+                                <i class="bi bi-play-fill"></i> Assistir Agora
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Jogo NBA 2 -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="card game-card" data-category="nba" data-teams="Chicago Bulls Boston Celtics">
+                        <div class="card-header" style="background: linear-gradient(90deg, #000000 0%, #C8102E 100%); color: white;">
+                            <small>NBA REGULAR SEASON</small>
+                        </div>
+                        <div class="card-body text-center">
+                            <div class="teams">
+                                <div class="team">
+                                    <img src="https://cdn-icons-png.flaticon.com/512/2583/2583313.png" alt="Bulls" class="team-logo">
+                                    <h5>Brooklyn Nets</h5>
+                                </div>
+                                <div class="vs">VS</div>
+                                <div class="team">
+                                    <img src="https://cdn-icons-png.flaticon.com/512/2583/2583311.png" alt="Celtics" class="team-logo">
+                                    <h5>Golden State Warriors</h5>
+                                </div>
+                            </div>
+                            <p class="text-muted mt-3">
+                                <i class="bi bi-clock"></i> 22:00 | Ao Vivo
+                            </p>
+                            <a href="player-nba-2.html" class="btn btn-nba" target="_blank">
+                                <i class="bi bi-play-fill"></i> Assistir Agora
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Jogo NBA 3 -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="card game-card" data-category="nba" data-teams="Brooklyn Nets Milwaukee Bucks">
+                        <div class="card-header" style="background: linear-gradient(90deg, #5D76A9 0%, #FDBB30 100%); color: white;">
+                            <small>NBA REGULAR SEASON</small>
+                        </div>
+                        <div class="card-body text-center">
+                            <div class="teams">
+                                <div class="team">
+                                    <img src="https://cdn-icons-png.flaticon.com/512/2583/2583317.png" alt="Nets" class="team-logo">
+                                    <h5>Miami Heat</h5>
+                                </div>
+                                <div class="vs">VS</div>
+                                <div class="team">
+                                    <img src="https://cdn-icons-png.flaticon.com/512/2583/2583324.png" alt="Bucks" class="team-logo">
+                                    <h5>Denver Nuggets</h5>
+                                </div>
+                            </div>
+                            <p class="text-muted mt-3">
+                                <i class="bi bi-clock"></i> 20:30 | Ao Vivo
+                            </p>
+                            <a href="player-nba-3.html" class="btn btn-nba" target="_blank">
+                                <i class="bi bi-play-fill"></i> Assistir Agora
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Jogo NBA 4 -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="card game-card" data-category="nba" data-teams="Chicago Bulls Miami Heat">
+                        <div class="card-header" style="background: linear-gradient(90deg, #CE1141 0%, #000000 100%); color: white;">
+                            <small>NBA REGULAR SEASON</small>
+                        </div>
+                        <div class="card-body text-center">
+                            <div class="teams">
+                                <div class="team">
+                                    <img src="https://cdn-icons-png.flaticon.com/512/2583/2583312.png" alt="Bulls" class="team-logo">
+                                    <h5>Chicago Bulls</h5>
+                                </div>
+                                <div class="vs">VS</div>
+                                <div class="team">
+                                    <img src="https://cdn-icons-png.flaticon.com/512/2583/2583323.png" alt="Heat" class="team-logo">
+                                    <h5>Miami Heat</h5>
+                                </div>
+                            </div>
+                            <p class="text-muted mt-3">
+                                <i class="bi bi-clock"></i> 21:00 | Ao Vivo
+                            </p>
+                            <a href="player-nba-4.html" class="btn btn-nba" target="_blank">
+                                <i class="bi bi-play-fill"></i> Assistir Agora
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Jogo NBA 5 -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="card game-card" data-category="nba" data-teams="Dallas Mavericks Phoenix Suns">
+                        <div class="card-header" style="background: linear-gradient(90deg, #007DC5 0%, #C4CED4 100%); color: white;">
+                            <small>NBA REGULAR SEASON</small>
+                        </div>
+                        <div class="card-body text-center">
+                            <div class="teams">
+                                <div class="team">
+                                    <img src="https://cdn-icons-png.flaticon.com/512/2583/2583320.png" alt="Mavericks" class="team-logo">
+                                    <h5>Dallas Mavericks</h5>
+                                </div>
+                                <div class="vs">VS</div>
+                                <div class="team">
+                                    <img src="https://cdn-icons-png.flaticon.com/512/2583/2583309.png" alt="Suns" class="team-logo">
+                                    <h5>Phoenix Suns</h5>
+                                </div>
+                            </div>
+                            <p class="text-muted mt-3">
+                                <i class="bi bi-clock"></i> 19:30 | Ao Vivo
+                            </p>
+                            <a href="player-nba-5.html" class="btn btn-nba" target="_blank">
+                                <i class="bi bi-play-fill"></i> Assistir Agora
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Jogo NBA 6 -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="card game-card" data-category="nba" data-teams="LA Clippers Denver Nuggets">
+                        <div class="card-header" style="background: linear-gradient(90deg, #0C2340 0%, #C8102E 100%); color: white;">
+                            <small>NBA REGULAR SEASON</small>
+                        </div>
+                        <div class="card-body text-center">
+                            <div class="teams">
+                                <div class="team">
+                                    <img src="https://cdn-icons-png.flaticon.com/512/2583/2583321.png" alt="Clippers" class="team-logo">
+                                    <h5>LA Clippers</h5>
+                                </div>
+                                <div class="vs">VS</div>
+                                <div class="team">
+                                    <img src="https://cdn-icons-png.flaticon.com/512/2583/2583322.png" alt="Nuggets" class="team-logo">
+                                    <h5>Denver Nuggets</h5>
+                                </div>
+                            </div>
+                            <p class="text-muted mt-3">
+                                <i class="bi bi-clock"></i> 23:00 | Ao Vivo
+                            </p>
+                            <a href="player-nba-6.html" class="btn btn-nba" target="_blank">
+                                <i class="bi bi-play-fill"></i> Assistir Agora
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Filmes e Séries -->
+        <section id="filmes-series" class="mb-5">
+            <h2 class="section-title">
+                <i class="bi bi-film"></i> Filmes & Séries em Destaque
+            </h2>
+            <div class="row g-4">
+                <!-- Filme 1 -->
+                <div class="col-md-6 col-lg-3">
+                    <div class="card movie-card" data-category="filme" data-title="Vingadores: Ultimato" data-genre="Ação">
+                        <div class="movie-poster">
+                            <img src="https://m.media-amazon.com/images/M/MV5BMTc5MDE2ODcwNV5BMl5BanBnXkFtZTgwMzI2NzQ2NzM@._V1_FMjpg_UX1000_.jpg" class="card-img-top" alt="Vingadores">
+                            <div class="movie-overlay">
+                                <button class="btn btn-play" onclick="window.open('player-filme-1.html', '_blank')">
+                                    <i class="bi bi-play-fill"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title">Vingadores: Ultimato</h5>
+                            <p class="card-text"><small class="text-muted">Ação • 3h 02min • 2019</small></p>
+                            <div class="d-flex justify-content-between">
+                                <span class="badge bg-danger">HD</span>
+                                <div class="text-warning">
+                                    <i class="bi bi-star-fill"></i>
+                                    <i class="bi bi-star-fill"></i>
+                                    <i class="bi bi-star-fill"></i>
+                                    <i class="bi bi-star-fill"></i>
+                                    <i class="bi bi-star-half"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Filme 2 -->
+                <div class="col-md-6 col-lg-3">
+                    <div class="card movie-card" data-category="filme" data-title="John Wick 4" data-genre="Ação">
+                        <div class="movie-poster">
+                            <img src="https://m.media-amazon.com/images/I/81fk-N7tvbL._AC_SL1500_.jpg" class="card-img-top" alt="John Wick">
+                            <div class="movie-overlay">
+                                <button class="btn btn-play" onclick="window.open('player-filme-2.html', '_blank')">
+                                    <i class="bi bi-play-fill"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title">John Wick 4</h5>
+                            <p class="card-text"><small class="text-muted">Ação • 2h 49min • 2023</small></p>
+                            <div class="d-flex justify-content-between">
+                                <span class="badge bg-danger">HD</span>
+                                <div class="text-warning">
+                                    <i class="bi bi-star-fill"></i>
+                                    <i class="bi bi-star-fill"></i>
+                                    <i class="bi bi-star-fill"></i>
+                                    <i class="bi bi-star-fill"></i>
+                                    <i class="bi bi-star"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Série 1 -->
+                <div class="col-md-6 col-lg-3">
+                    <div class="card movie-card" data-category="serie" data-title="Stranger Things" data-genre="Drama">
+                        <div class="movie-poster">
+                            <img src="https://m.media-amazon.com/images/I/81DeWbxJTBL._AC_SL1500_.jpg" class="card-img-top" alt="Stranger Things">
+                            <div class="movie-overlay">
+                                <button class="btn btn-play" onclick="window.open('player-serie-1.html', '_blank')">
+                                    <i class="bi bi-play-fill"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title">Stranger Things</h5>
+                            <p class="card-text"><small class="text-muted">Drama • 4 Temporadas</small></p>
+                            <div class="d-flex justify-content-between">
+                                <span class="badge bg-primary">SÉRIE</span>
+                                <div class="text-warning">
+                                    <i class="bi bi-star-fill"></i>
+                                    <i class="bi bi-star-fill"></i>
+                                    <i class="bi bi-star-fill"></i>
+                                    <i class="bi bi-star-fill"></i>
+                                    <i class="bi bi-star-half"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Série 2 -->
+                <div class="col-md-6 col-lg-3">
+                    <div class="card movie-card" data-category="serie" data-title="The Last of Us" data-genre="Drama">
+                        <div class="movie-poster">
+                            <img src="https://m.media-amazon.com/images/M/MV5BZGUzYTI3M2EtZmM0Yy00NGUyLWI4ODEtN2Q3ZGJlYzhhZjU3XkEyXkFqcGdeQXVyNTM0OTY1OQ@@._V1_FMjpg_UX1000_.jpg" class="card-img-top" alt="The Last of Us">
+                            <div class="movie-overlay">
+                                <button class="btn btn-play" onclick="window.open('player-serie-2.html', '_blank')">
+                                    <i class="bi bi-play-fill"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title">The Last of Us</h5>
+                            <p class="card-text"><small class="text-muted">Drama • 1 Temporada</small></p>
+                            <div class="d-flex justify-content-between">
+                                <span class="badge bg-primary">SÉRIE</span>
+                                <div class="text-warning">
+                                    <i class="bi bi-star-fill"></i>
+                                    <i class="bi bi-star-fill"></i>
+                                    <i class="bi bi-star-fill"></i>
+                                    <i class="bi bi-star-fill"></i>
+                                    <i class="bi bi-star-fill"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center mt-4">
+                <a href="filmes.html" class="btn btn-outline-light">
+                    <i class="bi bi-collection-play"></i> Ver Mais Filmes e Séries
+                </a>
+            </div>
+        </section>
+
+        <!-- Sobre / Info -->
+        <section id="sobre" class="mb-5">
+            <h2 class="section-title">
+                <i class="bi bi-info-circle"></i> Sobre o IPTV DO ASAFE
+            </h2>
+            <div class="card about-card">
+                <div class="card-body">
+                    <div class="row align-items-center">
+                        <div class="col-md-3 text-center">
+                            <div class="profile-circle">
+                                <i class="bi bi-person-circle display-1"></i>
+                            </div>
+                            <h4 class="mt-3">Asafe</h4>
+                            <p class="text-muted">Desenvolvedor & Criador</p>
+                        </div>
+                        <div class="col-md-9">
+                            <h4>Olá, eu sou o Asafe!</h4>
+                            <p class="lead">Sou o criador e desenvolvedor do IPTV DO ASAFE, uma plataforma desenvolvida para uso pessoal com o objetivo de proporcionar uma experiência de transmissão esportiva e entretenimento de qualidade.</p>
+                            
+                            <h5 class="mt-4">✨ Características do Projeto:</h5>
+                            <ul class="features-list">
+                                <li><i class="bi bi-check-circle text-success"></i> Interface moderna e responsiva</li>
+                                <li><i class="bi bi-check-circle text-success"></i> Sistema anti pop-ups integrado</li>
+                                <li><i class="bi bi-check-circle text-success"></i> Player com tela cheia real</li>
+                                <li><i class="bi bi-check-circle text-success"></i> Multiplataforma (Desktop e Mobile)</li>
+                                <li><i class="bi bi-check-circle text-success"></i> Atualizações constantes</li>
+                            </ul>
+                            
+                            <h5 class="mt-4">🎯 Objetivo:</h5>
+                            <p>Criar uma solução pessoal para assistir conteúdos esportivos e de entretenimento sem anúncios intrusivos, com foco na experiência do usuário.</p>
+                            
+                            <div class="alert alert-info mt-4">
+                                <i class="bi bi-exclamation-triangle"></i>
+                                <strong>Aviso Legal:</strong> Este projeto é apenas para uso pessoal e educacional. Não nos responsabilizamos por conteúdos de terceiros.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white py-4 mt-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <h5><i class="bi bi-tv"></i> IPTV DO ASAFE</h5>
+                    <p class="mb-0">Desenvolvido por Asafe para uso pessoal</p>
+                    <small class="text-muted">Projeto iniciado em 2025</small>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <h5>Contato</h5>
+                    <p class="mb-0">
+                        <i class="bi bi-envelope"></i> iptvasafe@exemplo.com
+                    </p>
+                    <p class="mb-0">
+                        <i class="bi bi-github"></i> github.com/asafe
+                    </p>
+                </div>
+            </div>
+            <hr class="my-3">
+            <div class="text-center">
+                <small class="text-muted">
+                    © 2025 IPTV DO ASAFE. Todos os direitos reservados.
+                    <br>
+                    Este site é apenas para fins educacionais e de uso pessoal.
+                </small>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- JS Personalizado -->
+    <script src="js/main.js"></script>
+</body>
+</html>
