@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Missão Impossível 7: Acerto de Contas | IPTV DO ASAFE</title>
+    <title>Invocação do Mal 2 | IPTV DO ASAFE</title>
     <!-- Bootstrap Icons -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
     <style>
@@ -132,7 +132,7 @@
             background: rgba(40, 40, 40, 0.9);
             padding: 20px;
             border-radius: 10px;
-            border: 2px solid #dc3545;
+            border: 2px solid #6f42c1;
         }
         
         .movie-poster {
@@ -153,7 +153,7 @@
             color: #fff;
             margin-bottom: 15px;
             font-size: 2rem;
-            border-bottom: 2px solid #dc3545;
+            border-bottom: 2px solid #6f42c1;
             padding-bottom: 10px;
         }
         
@@ -166,7 +166,7 @@
         }
         
         .movie-meta span {
-            background: rgba(220, 53, 69, 0.2);
+            background: rgba(111, 66, 193, 0.2);
             padding: 5px 10px;
             border-radius: 5px;
         }
@@ -184,8 +184,8 @@
         
         /* Instruções */
         .instructions {
-            background: rgba(255, 193, 7, 0.1);
-            border: 2px solid #ffc107;
+            background: rgba(111, 66, 193, 0.1);
+            border: 2px solid #6f42c1;
             border-radius: 10px;
             padding: 20px;
             margin-bottom: 20px;
@@ -193,7 +193,7 @@
         }
         
         .instructions h3 {
-            color: #ffc107;
+            color: #6f42c1;
             margin-bottom: 10px;
         }
         
@@ -268,12 +268,12 @@
             background: #218838;
         }
         
-        .btn-mission {
-            background: linear-gradient(45deg, #ffc107, #dc3545);
+        .btn-horror {
+            background: linear-gradient(45deg, #6f42c1, #dc3545);
         }
         
-        .btn-mission:hover {
-            background: linear-gradient(45deg, #e0a800, #bb2d3b);
+        .btn-horror:hover {
+            background: linear-gradient(45deg, #5a37a8, #bb2d3b);
         }
         
         /* Informações adicionais */
@@ -282,7 +282,7 @@
             border-radius: 15px;
             padding: 25px;
             margin-bottom: 30px;
-            border: 2px solid #ffc107;
+            border: 2px solid #6f42c1;
         }
         
         .info-section {
@@ -294,7 +294,7 @@
             font-size: 1.3rem;
             margin-bottom: 15px;
             padding-bottom: 8px;
-            border-bottom: 1px solid rgba(255, 193, 7, 0.3);
+            border-bottom: 1px solid rgba(111, 66, 193, 0.3);
             display: flex;
             align-items: center;
             gap: 10px;
@@ -316,7 +316,7 @@
             border-radius: 50%;
             object-fit: cover;
             margin-bottom: 10px;
-            border: 2px solid #ffc107;
+            border: 2px solid #6f42c1;
         }
         
         .cast-name {
@@ -343,7 +343,7 @@
         }
         
         .info-list strong {
-            color: #ffc107;
+            color: #6f42c1;
             min-width: 120px;
             display: inline-block;
         }
@@ -353,7 +353,7 @@
             background: rgba(40, 40, 40, 0.9);
             border-radius: 15px;
             padding: 25px;
-            border: 2px solid #ffc107;
+            border: 2px solid #6f42c1;
         }
         
         .recommendations h4 {
@@ -361,7 +361,7 @@
             font-size: 1.3rem;
             margin-bottom: 20px;
             padding-bottom: 8px;
-            border-bottom: 1px solid rgba(255, 193, 7, 0.3);
+            border-bottom: 1px solid rgba(111, 66, 193, 0.3);
         }
         
         .recommendations-grid {
@@ -381,14 +381,14 @@
         
         .rec-card:hover {
             transform: translateY(-5px);
-            border-color: #ffc107;
+            border-color: #6f42c1;
         }
         
         .rec-poster {
             width: 100%;
             height: 250px;
             object-fit: cover;
-            border-bottom: 2px solid #ffc107;
+            border-bottom: 2px solid #6f42c1;
         }
         
         .rec-info {
@@ -513,11 +513,11 @@
             transform: translateY(-5px);
         }
         
-        /* Missão Impossível Badge */
-        .mission-badge {
+        /* Horror Badge */
+        .horror-badge {
             display: inline-block;
-            background: linear-gradient(45deg, #ffc107, #dc3545);
-            color: #000;
+            background: linear-gradient(45deg, #6f42c1, #dc3545);
+            color: white;
             padding: 4px 10px;
             border-radius: 20px;
             font-size: 0.8rem;
@@ -526,23 +526,23 @@
             animation: pulse 2s infinite;
         }
         
-        /* Missão Impossível Banner */
-        .mission-banner {
-            background: linear-gradient(90deg, rgba(0, 0, 0, 0.8), rgba(220, 53, 69, 0.8));
+        /* Horror Banner */
+        .horror-banner {
+            background: linear-gradient(90deg, rgba(111, 66, 193, 0.8), rgba(220, 53, 69, 0.8));
             border-radius: 10px;
             padding: 15px;
             margin-bottom: 20px;
             text-align: center;
-            border: 2px solid #ffc107;
+            border: 2px solid #ffcc00;
         }
         
-        .mission-banner h4 {
-            color: #ffc107;
+        .horror-banner h4 {
+            color: #ffcc00;
             margin-bottom: 5px;
             font-size: 1.1rem;
         }
         
-        .mission-banner p {
+        .horror-banner p {
             color: #fff;
             font-size: 0.9rem;
             margin: 0;
@@ -565,10 +565,10 @@
             to { transform: translateY(-10px); opacity: 0; }
         }
         
-        @keyframes missionGlow {
-            0% { text-shadow: 0 0 5px #ffc107; }
+        @keyframes horrorGlow {
+            0% { text-shadow: 0 0 5px #6f42c1; }
             50% { text-shadow: 0 0 15px #dc3545; }
-            100% { text-shadow: 0 0 5px #ffc107; }
+            100% { text-shadow: 0 0 5px #6f42c1; }
         }
         
         /* Responsividade */
@@ -718,56 +718,57 @@
 
     <!-- Conteúdo Principal -->
     <div class="container">
-        <!-- Banner Missão Impossível -->
-        <div class="mission-banner">
-            <h4><i class="bi bi-exclamation-triangle-fill"></i> A Missão Mais Perigosa de Ethan Hunt</h4>
-            <p>"Sua missão, caso decida aceitá-la..."</p>
+        <!-- Banner Horror -->
+        <div class="horror-banner">
+            <h4><i class="bi bi-moon-stars-fill"></i> Baseado em Casos Reais dos Warren</h4>
+            <p>"Esta noite, o demônio mostra sua verdadeira face."</p>
         </div>
 
         <!-- Informações do filme -->
         <div class="movie-info">
             <div class="movie-poster">
-                <img src="https://br.web.img3.acsta.net/r_1280_720/pictures/23/05/17/15/44/5844161.jpg" 
-                     alt="Missão Impossível 7: Acerto de Contas">
+                <img src="https://m.media-amazon.com/images/M/MV5BZmM0YjAwNDktMTc5Zi00Y2NjLTkzMWEtZDYzYmE3ODJlZDVkXkEyXkFqcGc@._V1_.jpg" 
+                     alt="Invocação do Mal 2">
             </div>
             <div class="movie-details">
                 <h1 class="movie-title">
-                    MISSÃO IMPOSSÍVEL 7: ACERTO DE CONTAS
-                    <span class="mission-badge">TOM CRUISE</span>
+                    INVOCAÇÃO DO MAL 2
+                    <span class="horror-badge">CASOS REAIS</span>
                 </h1>
                 <div class="movie-meta">
-                    <span><i class="bi bi-clock"></i> 2h 43min</span>
-                    <span><i class="bi bi-calendar"></i> 2023</span>
-                    <span><i class="bi bi-star"></i> Ação/Aventura</span>
-                    <span><i class="bi bi-tag"></i> 4K HDR</span>
-                    <span><i class="bi bi-award"></i> 14 anos</span>
+                    <span><i class="bi bi-clock"></i> 2h 14min</span>
+                    <span><i class="bi bi-calendar"></i> 2016</span>
+                    <span><i class="bi bi-star"></i> Terror/Suspense</span>
+                    <span><i class="bi bi-tag"></i> HD 1080p</span>
+                    <span><i class="bi bi-award"></i> 16 anos</span>
                 </div>
                 <div class="movie-rating">
                     <i class="bi bi-star-fill"></i>
                     <i class="bi bi-star-fill"></i>
                     <i class="bi bi-star-fill"></i>
                     <i class="bi bi-star-fill"></i>
-                    <i class="bi bi-star"></i>
-                    <span style="margin-left: 10px;">7.7/10 IMDb</span>
+                    <i class="bi bi-star-half"></i>
+                    <span style="margin-left: 10px;">7.3/10 IMDb</span>
                 </div>
                 <p class="movie-synopsis">
-                    Ethan Hunt e sua equipe do IMF embarcam em sua missão mais perigosa até agora: rastrear 
-                    uma nova arma terrorista que ameaça toda a humanidade. Com o destino do mundo em jogo e 
-                    forças sombrias dos bastidores, Ethan deve confrontar um inimigo poderoso e misterioso. 
-                    Uma corrida contra o tempo leva a uma missão mortal ao redor do mundo.
+                    Lorraine e Ed Warren viajam até o norte de Londres para ajudar uma mãe solteira que está 
+                    criando quatro filhos sozinha em uma casa atormentada por espíritos malignos. O caso se 
+                    torna ainda mais perturbador quando Lorraine encontra uma conexão com um caso anterior, 
+                    envolvendo a infame boneca Annabelle e um assassino em série conhecido como "O Assassino 
+                    do Casamento".
                 </p>
             </div>
         </div>
 
         <!-- Instruções -->
         <div class="instructions">
-            <h3><i class="bi bi-info-circle"></i> PLAYER OFICIAL - MISSÃO IMPOSSÍVEL 7</h3>
+            <h3><i class="bi bi-info-circle"></i> PLAYER OFICIAL - INVOCAÇÃO DO MAL 2</h3>
             <p><strong>Player exclusivo em alta qualidade.</strong> Para melhor experiência:</p>
             <ol style="text-align: left; max-width: 600px; margin: 10px auto; color: #ccc;">
                 <li>Use o botão <strong>"Tela Cheia"</strong> para visualização imersiva</li>
                 <li>Para tela cheia: <strong>Pressione F11</strong> ou use o botão do player</li>
                 <li>Se houver problemas, recarregue a página ou o player</li>
-                <li>Recomendado: Conexão estável para melhor qualidade</li>
+                <li>Recomendado: Assista à noite para maior imersão</li>
             </ol>
         </div>
 
@@ -780,10 +781,10 @@
                     allowfullscreen="" 
                     webkitallowfullscreen="" 
                     mozallowfullscreen="" 
-                    src="https://assistirseriesonline.icu/filme/tt9603212"
+                    src="https://assistirseriesonline.icu/filme/tt3065204"
                     frameborder="0"
                     id="playerIframe"
-                    title="Missão Impossível 7: Acerto de Contas - Player Oficial">
+                    title="Invocação do Mal 2 - Player Oficial">
                 </iframe>
             </div>
         </div>
@@ -796,11 +797,11 @@
             <button class="btn" onclick="refreshPlayer()">
                 <i class="bi bi-arrow-clockwise"></i> Recarregar Player
             </button>
-            <button class="btn btn-mission" onclick="window.location.href='filmes.html'">
+            <button class="btn btn-horror" onclick="window.location.href='filmes.html'">
                 <i class="bi bi-arrow-left"></i> Voltar para Filmes
             </button>
-            <button class="btn btn-primary" onclick="window.location.href='player-filme-14.html'">
-                <i class="bi bi-play-circle"></i> Ver La La Land
+            <button class="btn btn-primary" onclick="window.location.href='player-filme-10.html'">
+                <i class="bi bi-play-circle"></i> Ver Sobrenatural: Porta Vermelha
             </button>
         </div>
 
@@ -810,28 +811,28 @@
                 <h4><i class="bi bi-people"></i> Elenco Principal</h4>
                 <div class="cast-grid">
                     <div class="cast-member">
-                        <img src="https://m.media-amazon.com/images/M/MV5BMTk1MjM3NTU5M15BMl5BanBnXkFtZTcwMTMyMjAyMg@@._V1_.jpg" 
-                             alt="Tom Cruise" class="cast-photo">
-                        <div class="cast-name">Tom Cruise</div>
-                        <div class="cast-character">Ethan Hunt</div>
+                        <img src="https://m.media-amazon.com/images/M/MV5BMTg0NTM3MTI1MF5BMl5BanBnXkFtZTcwMTA0MTk3Mw@@._V1_.jpg" 
+                             alt="Vera Farmiga" class="cast-photo">
+                        <div class="cast-name">Vera Farmiga</div>
+                        <div class="cast-character">Lorraine Warren</div>
                     </div>
                     <div class="cast-member">
-                        <img src="https://m.media-amazon.com/images/M/MV5BNjk0MjI4MDM3OF5BMl5BanBnXkFtZTcwNTE0NjQyNQ@@._V1_.jpg" 
-                             alt="Hayley Atwell" class="cast-photo">
-                        <div class="cast-name">Hayley Atwell</div>
-                        <div class="cast-character">Grace</div>
+                        <img src="https://m.media-amazon.com/images/M/MV5BMTUyMjI1MDEyM15BMl5BanBnXkFtZTcwNDQ1NzYwMw@@._V1_.jpg" 
+                             alt="Patrick Wilson" class="cast-photo">
+                        <div class="cast-name">Patrick Wilson</div>
+                        <div class="cast-character">Ed Warren</div>
                     </div>
                     <div class="cast-member">
-                        <img src="https://m.media-amazon.com/images/M/MV5BMTc5NzUyNTI4N15BMl5BanBnXkFtZTgwNDg2MTU2NzM@._V1_.jpg" 
-                             alt="Ving Rhames" class="cast-photo">
-                        <div class="cast-name">Ving Rhames</div>
-                        <div class="cast-character">Luther Stickell</div>
+                        <img src="https://m.media-amazon.com/images/M/MV5BMTU2MzYyNDc4MF5BMl5BanBnXkFtZTgwMjk3MDYxMzE@._V1_.jpg" 
+                             alt="Frances O'Connor" class="cast-photo">
+                        <div class="cast-name">Frances O'Connor</div>
+                        <div class="cast-character">Peggy Hodgson</div>
                     </div>
                     <div class="cast-member">
-                        <img src="https://m.media-amazon.com/images/M/MV5BMTY4OTk4NjE2N15BMl5BanBnXkFtZTgwNTM5MDI2MTE@._V1_.jpg" 
-                             alt="Simon Pegg" class="cast-photo">
-                        <div class="cast-name">Simon Pegg</div>
-                        <div class="cast-character">Benji Dunn</div>
+                        <img src="https://m.media-amazon.com/images/M/MV5BMTc5NzY4MjAwMF5BMl5BanBnXkFtZTcwMjI0NDYyNw@@._V1_.jpg" 
+                             alt="Madison Wolfe" class="cast-photo">
+                        <div class="cast-name">Madison Wolfe</div>
+                        <div class="cast-character">Janet Hodgson</div>
                     </div>
                 </div>
             </div>
@@ -839,24 +840,26 @@
             <div class="info-section">
                 <h4><i class="bi bi-info-circle"></i> Informações Técnicas</h4>
                 <ul class="info-list">
-                    <li><strong>Título Original:</strong> Mission: Impossible - Dead Reckoning Part One</li>
-                    <li><strong>Ano de Produção:</strong> 2023</li>
-                    <li><strong>Duração:</strong> 163 minutos</li>
+                    <li><strong>Título Original:</strong> The Conjuring 2</li>
+                    <li><strong>Ano de Produção:</strong> 2016</li>
+                    <li><strong>Duração:</strong> 134 minutos</li>
                     <li><strong>País de Origem:</strong> Estados Unidos</li>
                     <li><strong>Idioma Original:</strong> Inglês</li>
-                    <li><strong>Direção:</strong> Christopher McQuarrie</li>
-                    <li><strong>Orçamento:</strong> $290 milhões</li>
-                    <li><strong>Bilheteria:</strong> $567.5 milhões</li>
+                    <li><strong>Direção:</strong> James Wan</li>
+                    <li><strong>Orçamento:</strong> $40 milhões</li>
+                    <li><strong>Bilheteria:</strong> $320.4 milhões</li>
                 </ul>
             </div>
             
             <div class="info-section">
-                <h4><i class="bi bi-trophy"></i> Cenas de Ação Marcantes</h4>
+                <h4><i class="bi bi-trophy"></i> Baseado em Casos Reais</h4>
                 <p class="movie-synopsis">
-                    Tom Cruise realiza suas próprias cenas de ação mais arriscadas até agora, incluindo:
-                    um salto de moto de um penhasco de 4.000 pés, uma perseguição de carro pelas ruas de Roma,
-                    e uma luta mortal dentro de um trem em movimento que está descarrilando. Todas as cenas
-                    foram filmadas sem dublês, mantendo a tradição da franquia de entregar ação real e visceral.
+                    O filme é baseado no famoso "Caso Enfield", investigado pelos demonologistas Ed e 
+                    Lorraine Warren nos anos 70. Considerado um dos casos paranormais mais documentados 
+                    da história, envolveu a família Hodgson em Enfield, Londres. A produção investiu 
+                    extensivamente em pesquisa, incluindo gravações de áudio reais e entrevistas com os 
+                    envolvidos, resultando em um dos filmes de terror mais aterrorizantes e aclamados 
+                    da década.
                 </p>
             </div>
         </div>
@@ -865,39 +868,39 @@
         <div class="recommendations">
             <h4><i class="bi bi-collection-play"></i> Você Também Pode Gostar</h4>
             <div class="recommendations-grid">
-                <div class="rec-card" onclick="window.location.href='player-filme-14.html'">
-                    <img src="https://i5.walmartimages.com/seo/Rolled-Poster-La-La-Land-Movie-24-x-36-Poster_20f02811-01b4-4aea-9bb2-a79942bd2642_1.856c035d66f8fd216f6d933259bc3dfb.jpeg" 
-                         alt="La La Land" class="rec-poster">
+                <div class="rec-card" onclick="window.location.href='player-filme-10.html'">
+                    <img src="https://m.media-amazon.com/images/S/pv-target-images/785ad514a2dce775e0d7f3bc894daf668d156b5444b821b0a1e4029f7ee4deb3.jpg" 
+                         alt="Sobrenatural: A Porta Vermelha" class="rec-poster">
                     <div class="rec-info">
-                        <div class="rec-title">La La Land</div>
-                        <div class="rec-year">2016</div>
+                        <div class="rec-title">Sobrenatural: A Porta Vermelha</div>
+                        <div class="rec-year">2023</div>
                     </div>
                 </div>
                 
-                <div class="rec-card" onclick="window.location.href='player-filme-13.html'">
-                    <img src="https://www.europanet.com.br/image_gen/resizeimg.php?cod_produto=107535" 
-                         alt="Pantera Negra" class="rec-poster">
+                <div class="rec-card" onclick="window.location.href='#'">
+                    <img src="https://br.web.img3.acsta.net/medias/nmedia/18/97/25/23/20532535.jpg" 
+                         alt="Invocação do Mal" class="rec-poster">
                     <div class="rec-info">
-                        <div class="rec-title">Pantera Negra</div>
-                        <div class="rec-year">2018</div>
+                        <div class="rec-title">Invocação do Mal</div>
+                        <div class="rec-year">2013</div>
                     </div>
                 </div>
                 
-                <div class="rec-card" onclick="window.location.href='player-filme-12.html'">
-                    <img src="https://m.media-amazon.com/images/I/91obuWzA3XL.jpg" 
-                         alt="Interstellar" class="rec-poster">
+                <div class="rec-card" onclick="window.location.href='#'">
+                    <img src="https://upload.wikimedia.org/wikipedia/pt/9/9b/Annabelle-poster.jpg" 
+                         alt="Annabelle" class="rec-poster">
                     <div class="rec-info">
-                        <div class="rec-title">Interstellar</div>
+                        <div class="rec-title">Annabelle</div>
                         <div class="rec-year">2014</div>
                     </div>
                 </div>
                 
-                <div class="rec-card" onclick="window.location.href='player-filme-15.html'">
-                    <img src="https://artecult.com/wp-content/uploads/2022/11/image002-1-405x600.jpg" 
-                         alt="Avatar: O Caminho da Água" class="rec-poster">
+                <div class="rec-card" onclick="window.location.href='#'">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSLE5paFdWxXIMCoB164EC9k8KUpZiu9ijPNw&s" 
+                         alt="O Exorcista" class="rec-poster">
                     <div class="rec-info">
-                        <div class="rec-title">Avatar: O Caminho da Água</div>
-                        <div class="rec-year">2022</div>
+                        <div class="rec-title">O Exorcista</div>
+                        <div class="rec-year">1973</div>
                     </div>
                 </div>
             </div>
@@ -922,7 +925,7 @@
         
         // Inicialização
         document.addEventListener('DOMContentLoaded', function() {
-            console.log('Missão Impossível 7 - Página carregada com sucesso!');
+            console.log('Invocação do Mal 2 - Página carregada com sucesso!');
             
             // Inicializar barra de busca
             initializeSearch();
@@ -938,7 +941,7 @@
             
             // Adicionar animação ao título
             const title = document.querySelector('.movie-title');
-            title.style.animation = 'missionGlow 3s infinite';
+            title.style.animation = 'horrorGlow 3s infinite';
         });
         
         // Função para rolar para o topo
@@ -1004,45 +1007,45 @@
             // Resultados simulados
             const mockResults = [
                 {
-                    title: "Missão Impossível 7: Acerto de Contas",
+                    title: "Invocação do Mal 2",
                     type: "Filme",
-                    category: "Ação/Aventura",
-                    link: "player-filme-16.html",
-                    badgeColor: "#ffc107",
+                    category: "Terror/Suspense",
+                    link: "player-filme-19.html",
+                    badgeColor: "#6f42c1",
                     current: true
                 },
                 {
-                    title: "La La Land",
+                    title: "Sobrenatural: A Porta Vermelha",
                     type: "Filme", 
-                    category: "Romance/Musical",
-                    link: "player-filme-14.html",
+                    category: "Terror/Suspense",
+                    link: "player-filme-10.html",
                     badgeColor: "warning"
                 },
                 {
-                    title: "Pantera Negra",
+                    title: "Invocação do Mal",
                     type: "Filme",
-                    category: "Ação/Ficção Científica",
-                    link: "player-filme-13.html",
+                    category: "Terror/Suspense",
+                    link: "#",
                     badgeColor: "warning"
                 },
                 {
-                    title: "Interstellar",
+                    title: "Annabelle",
                     type: "Filme",
-                    category: "Ficção Científica/Drama",
-                    link: "player-filme-12.html",
+                    category: "Terror/Suspense",
+                    link: "#",
                     badgeColor: "warning"
                 },
                 {
-                    title: "Avatar: O Caminho da Água",
+                    title: "O Exorcista",
                     type: "Filme",
-                    category: "Ficção Científica/Aventura",
-                    link: "player-filme-15.html",
+                    category: "Terror/Drama",
+                    link: "#",
                     badgeColor: "warning"
                 },
                 {
-                    title: "Top Gun: Maverick",
-                    type: "Filme",
-                    category: "Ação/Drama",
+                    title: "A Maldição da Residência Hill",
+                    type: "Série",
+                    category: "Terror/Drama",
                     link: "#",
                     badgeColor: "info"
                 }
@@ -1055,12 +1058,12 @@
             mockResults.forEach(item => {
                 if (item.title.toLowerCase().includes(searchTerm) || 
                     item.category.toLowerCase().includes(searchTerm) ||
-                    "missão impossível tom cruise ethan hunt".includes(searchTerm)) {
+                    "invocação do mal terror james wan warren".includes(searchTerm)) {
                     
                     foundResults = true;
                     const isCurrent = item.current ? 'ATUAL' : item.type;
-                    const badgeColor = item.current ? '#ffc107' : (item.type === 'Filme' ? '#ffc107' : '#0dcaf0');
-                    const badgeTextColor = item.current ? '#000' : '#000';
+                    const badgeColor = item.current ? '#6f42c1' : (item.type === 'Filme' ? '#ffc107' : '#0dcaf0');
+                    const badgeTextColor = item.current ? '#fff' : '#000';
                     
                     resultsHTML += `
                         <div class="search-result-item">
@@ -1209,7 +1212,7 @@
                 color: white;
                 padding: 15px 20px;
                 border-radius: 8px;
-                border-left: 4px solid #ffc107;
+                border-left: 4px solid #ffcc00;
                 z-index: 10000;
                 animation: slideIn 0.3s ease;
                 max-width: 300px;
@@ -1218,7 +1221,7 @@
             
             messageEl.innerHTML = `
                 <div style="display: flex; align-items: center; gap: 10px;">
-                    <i class="bi bi-info-circle" style="color: #ffc107;"></i>
+                    <i class="bi bi-info-circle" style="color: #ffcc00;"></i>
                     <span>${message}</span>
                 </div>
             `;
@@ -1260,7 +1263,7 @@
         
         // Verificar se o player carregou
         iframe.addEventListener('load', function() {
-            console.log('Player Missão Impossível 7 carregado com sucesso');
+            console.log('Player Invocação do Mal 2 carregado com sucesso');
             showMessage('Player carregado! Use F11 para tela cheia.');
         });
         
@@ -1300,11 +1303,11 @@
                 }
             }
             
-            // L para La La Land
-            if (e.key === 'l' || e.key === 'L') {
+            // S para Sobrenatural
+            if (e.key === 's' || e.key === 'S') {
                 if (!e.target.matches('input, textarea')) {
                     e.preventDefault();
-                    window.location.href = 'player-filme-14.html';
+                    window.location.href = 'player-filme-10.html';
                 }
             }
             
@@ -1327,8 +1330,8 @@
         
         // Inicialização
         window.onload = function() {
-            console.log('Página Missão Impossível 7 carregada');
-            showMessage('Dicas: Ctrl+F = Buscar | F11 = Tela cheia | R = Recarregar | B = Voltar | L = La La Land');
+            console.log('Página Invocação do Mal 2 carregada');
+            showMessage('Dicas: Ctrl+F = Buscar | F11 = Tela cheia | R = Recarregar | B = Voltar | S = Sobrenatural');
             
             // Forçar permissões de tela cheia no iframe
             iframe.setAttribute('allowfullscreen', '');
@@ -1342,13 +1345,13 @@
                 document.body.style.opacity = '1';
             }, 100);
             
-            // Destacar badge da Missão
-            const missionBadge = document.querySelector('.mission-badge');
-            missionBadge.style.animation = 'pulse 2s infinite';
+            // Destacar badge de terror
+            const horrorBadge = document.querySelector('.horror-badge');
+            horrorBadge.style.animation = 'pulse 2s infinite';
             
             // Curiosidade especial
             setTimeout(() => {
-                showMessage('🚀 Tom Cruise | Salto de moto de 4.000 pés | Todas as cenas feitas sem dublês');
+                showMessage('👻 Baseado no Caso Enfield | Caso real dos anos 70 | James Wan direção');
             }, 3000);
         };
     </script>
