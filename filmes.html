@@ -550,6 +550,21 @@
         .content-card:nth-child(4) { animation-delay: 0.4s; }
         .content-card:nth-child(5) { animation-delay: 0.5s; }
         .content-card:nth-child(6) { animation-delay: 0.6s; }
+        
+        /* Estilo para conteúdo oculto inicialmente */
+        .hidden-initially {
+            display: none;
+        }
+        
+        /* Botão ver todos expandido */
+        .view-all.expanded {
+            color: #ffcc00;
+        }
+        
+        .view-all.expanded i {
+            transform: rotate(90deg);
+            transition: transform 0.3s ease;
+        }
     </style>
 </head>
 <body>
@@ -663,6 +678,16 @@
                             <i class="bi bi-rocket"></i> Ficção Científica
                         </button>
                     </li>
+                    <li class="category-item">
+                        <button class="category-btn" data-category="drama">
+                            <i class="bi bi-film"></i> Drama
+                        </button>
+                    </li>
+                    <li class="category-item">
+                        <button class="category-btn" data-category="animacao">
+                            <i class="bi bi-heart-fill"></i> Animação
+                        </button>
+                    </li>
                 </ul>
             </div>
             
@@ -672,7 +697,9 @@
                 <div class="section" id="filmes-destaque">
                     <div class="section-header">
                         <h3><i class="bi bi-trophy"></i> FILMES EM DESTAQUE</h3>
-                        <a href="#" class="view-all">Ver todos <i class="bi bi-arrow-right"></i></a>
+                        <a href="#" class="view-all" id="viewAllBtn" onclick="toggleAllFilmes(event)">
+                            Ver todos <i class="bi bi-arrow-right"></i>
+                        </a>
                     </div>
                     
                     <div class="content-grid">
@@ -1085,7 +1112,7 @@
                                     <span class="card-rating">7.7</span>
                                 </div>
                                 <div class="card-actions">
-                                    <button class="watch-btn" onclick="showMessage('Filme disponível em breve')">
+                                    <button class="watch-btn" onclick="window.location.href='player-filme-24.html'">
                                         <i class="bi bi-play-fill"></i> Assistir
                                     </button>
                                 </div>
@@ -1103,7 +1130,7 @@
                                     <span class="card-rating">7.7</span>
                                 </div>
                                 <div class="card-actions">
-                                    <button class="watch-btn" onclick="showMessage('Filme disponível em breve')">
+                                    <button class="watch-btn" onclick="window.location.href='player-filme-25.html'">
                                         <i class="bi bi-play-fill"></i> Assistir
                                     </button>
                                 </div>
@@ -1111,7 +1138,7 @@
                         </div>
 
                         <!-- Filme 25 - Disney+ (Encanto) -->
-                        <div class="content-card" data-category="disney">
+                        <div class="content-card" data-category="disney animacao">
                             <img src="https://m.media-amazon.com/images/M/MV5BNjE5NzA4ZDctOTJkZi00NzM0LTkwOTYtMDI4MmNkMzIxODhkXkEyXkFqcGdeQXVyNjY1MTg4Mzc@._V1_.jpg" 
                                  alt="Encanto" class="card-poster">
                             <div class="card-info">
@@ -1121,7 +1148,7 @@
                                     <span class="card-rating">7.2</span>
                                 </div>
                                 <div class="card-actions">
-                                    <button class="watch-btn" onclick="showMessage('Filme disponível em breve')">
+                                    <button class="watch-btn" onclick="window.location.href='player-filme-26.html'">
                                         <i class="bi bi-play-fill"></i> Assistir
                                     </button>
                                 </div>
@@ -1137,6 +1164,692 @@
                                 <div class="card-meta">
                                     <span class="card-category">Ação/Drama</span>
                                     <span class="card-rating">8.3</span>
+                                </div>
+                                <div class="card-actions">
+                                    <button class="watch-btn" onclick="window.location.href='player-filme-27.html'">
+                                        <i class="bi bi-play-fill"></i> Assistir
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- FILMES ADICIONADOS - OCULTOS INICIALMENTE -->
+                        
+                        <!-- Avatar (Aventura/Ficção) -->
+                        <div class="content-card hidden-initially" data-category="aventura ficcao">
+                            <img src="https://upload.wikimedia.org/wikipedia/pt/b/b0/Avatar-Teaser-Poster.jpg" 
+                                 alt="Avatar" class="card-poster">
+                            <div class="card-info">
+                                <h4 class="card-title">Avatar</h4>
+                                <div class="card-meta">
+                                    <span class="card-category">Aventura/Ficção</span>
+                                    <span class="card-rating">7.9</span>
+                                </div>
+                                <div class="card-actions">
+                                    <button class="watch-btn" onclick="showMessage('Filme disponível em breve')">
+                                        <i class="bi bi-play-fill"></i> Assistir
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- A Procura da Felicidade (Drama) -->
+                        <div class="content-card hidden-initially" data-category="drama">
+                            <img src="https://br.web.img2.acsta.net/r_1920_1080/medias/nmedia/18/86/96/34/20028591.jpg" 
+                                 alt="A Procura da Felicidade" class="card-poster">
+                            <div class="card-info">
+                                <h4 class="card-title">A Procura da Felicidade</h4>
+                                <div class="card-meta">
+                                    <span class="card-category">Drama</span>
+                                    <span class="card-rating">8.0</span>
+                                </div>
+                                <div class="card-actions">
+                                    <button class="watch-btn" onclick="showMessage('Filme disponível em breve')">
+                                        <i class="bi bi-play-fill"></i> Assistir
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- P.S. Eu Te Amo (Romance/Drama) -->
+                        <div class="content-card hidden-initially" data-category="romance drama">
+                            <img src="https://m.media-amazon.com/images/M/MV5BNTg2MDg4MjI5NV5BMl5BanBnXkFtZTcwMzQ0MDczMw@@._V1_.jpg" 
+                                 alt="P.S. Eu Te Amo" class="card-poster">
+                            <div class="card-info">
+                                <h4 class="card-title">P.S. Eu Te Amo</h4>
+                                <div class="card-meta">
+                                    <span class="card-category">Romance/Drama</span>
+                                    <span class="card-rating">7.1</span>
+                                </div>
+                                <div class="card-actions">
+                                    <button class="watch-btn" onclick="showMessage('Filme disponível em breve')">
+                                        <i class="bi bi-play-fill"></i> Assistir
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- A Última Música (Romance/Drama) -->
+                        <div class="content-card hidden-initially" data-category="romance drama">
+                            <img src="https://br.web.img2.acsta.net/medias/nmedia/18/87/32/17/19874294.jpg" 
+                                 alt="A Última Música" class="card-poster">
+                            <div class="card-info">
+                                <h4 class="card-title">A Última Música</h4>
+                                <div class="card-meta">
+                                    <span class="card-category">Romance/Drama</span>
+                                    <span class="card-rating">6.0</span>
+                                </div>
+                                <div class="card-actions">
+                                    <button class="watch-btn" onclick="showMessage('Filme disponível em breve')">
+                                        <i class="bi bi-play-fill"></i> Assistir
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- O Homem de Aço (DC/Ação) -->
+                        <div class="content-card hidden-initially" data-category="dc acao">
+                            <img src="https://m.media-amazon.com/images/M/MV5BY2NhYTljY2YtZmJkYS00Zjc2LTg2NDUtMmYxZGFhMjY4YTU0XkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg" 
+                                 alt="O Homem de Aço" class="card-poster">
+                            <div class="card-info">
+                                <h4 class="card-title">O Homem de Aço</h4>
+                                <div class="card-meta">
+                                    <span class="card-category">DC/Ação</span>
+                                    <span class="card-rating">7.1</span>
+                                </div>
+                                <div class="card-actions">
+                                    <button class="watch-btn" onclick="showMessage('Filme disponível em breve')">
+                                        <i class="bi bi-play-fill"></i> Assistir
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Invocação do Mal (Terror) -->
+                        <div class="content-card hidden-initially" data-category="terror">
+                            <img src="https://br.web.img3.acsta.net/medias/nmedia/18/97/25/23/20532535.jpg" 
+                                 alt="Invocação do Mal" class="card-poster">
+                            <div class="card-info">
+                                <h4 class="card-title">Invocação do Mal</h4>
+                                <div class="card-meta">
+                                    <span class="card-category">Terror</span>
+                                    <span class="card-rating">7.5</span>
+                                </div>
+                                <div class="card-actions">
+                                    <button class="watch-btn" onclick="showMessage('Filme disponível em breve')">
+                                        <i class="bi bi-play-fill"></i> Assistir
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- It: A Coisa (Terror) -->
+                        <div class="content-card hidden-initially" data-category="terror">
+                            <img src="https://uauposters.com.br/media/catalog/product/1/1/111220180226-uau-posters-filmes-terror-it-a-coisa-palhaco.jpg" 
+                                 alt="It: A Coisa" class="card-poster">
+                            <div class="card-info">
+                                <h4 class="card-title">It: A Coisa</h4>
+                                <div class="card-meta">
+                                    <span class="card-category">Terror</span>
+                                    <span class="card-rating">7.3</span>
+                                </div>
+                                <div class="card-actions">
+                                    <button class="watch-btn" onclick="showMessage('Filme disponível em breve')">
+                                        <i class="bi bi-play-fill"></i> Assistir
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- A Freira (Terror) -->
+                        <div class="content-card hidden-initially" data-category="terror">
+                            <img src="https://br.web.img3.acsta.net/pictures/18/07/18/21/53/1348208.jpg" 
+                                 alt="A Freira" class="card-poster">
+                            <div class="card-info">
+                                <h4 class="card-title">A Freira</h4>
+                                <div class="card-meta">
+                                    <span class="card-category">Terror</span>
+                                    <span class="card-rating">5.3</span>
+                                </div>
+                                <div class="card-actions">
+                                    <button class="watch-btn" onclick="showMessage('Filme disponível em breve')">
+                                        <i class="bi bi-play-fill"></i> Assistir
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Annabelle (Terror) -->
+                        <div class="content-card hidden-initially" data-category="terror">
+                            <img src="https://m.media-amazon.com/images/M/MV5BNjkyMDU5ZWQtZDhkOC00ZWFjLWIyM2MtZWFhMDUzNjdlNzU2XkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg" 
+                                 alt="Annabelle" class="card-poster">
+                            <div class="card-info">
+                                <h4 class="card-title">Annabelle</h4>
+                                <div class="card-meta">
+                                    <span class="card-category">Terror</span>
+                                    <span class="card-rating">5.4</span>
+                                </div>
+                                <div class="card-actions">
+                                    <button class="watch-btn" onclick="showMessage('Filme disponível em breve')">
+                                        <i class="bi bi-play-fill"></i> Assistir
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Se Beber Não Case 2 (Comédia) -->
+                        <div class="content-card hidden-initially" data-category="comedia">
+                            <img src="https://m.media-amazon.com/images/M/MV5BY2E4ZTc4YzctMDcxOS00YTlkLThiZDEtZTFjMTI1M2M1OGY4XkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg" 
+                                 alt="Se Beber Não Case 2" class="card-poster">
+                            <div class="card-info">
+                                <h4 class="card-title">Se Beber Não Case 2</h4>
+                                <div class="card-meta">
+                                    <span class="card-category">Comédia</span>
+                                    <span class="card-rating">6.4</span>
+                                </div>
+                                <div class="card-actions">
+                                    <button class="watch-btn" onclick="showMessage('Filme disponível em breve')">
+                                        <i class="bi bi-play-fill"></i> Assistir
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Se Beber Não Case 3 (Comédia) -->
+                        <div class="content-card hidden-initially" data-category="comedia">
+                            <img src="https://br.web.img3.acsta.net/pictures/210/036/21003616_20130506145219431.jpg" 
+                                 alt="Se Beber Não Case 3" class="card-poster">
+                            <div class="card-info">
+                                <h4 class="card-title">Se Beber Não Case 3</h4>
+                                <div class="card-meta">
+                                    <span class="card-category">Comédia</span>
+                                    <span class="card-rating">6.1</span>
+                                </div>
+                                <div class="card-actions">
+                                    <button class="watch-btn" onclick="showMessage('Filme disponível em breve')">
+                                        <i class="bi bi-play-fill"></i> Assistir
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Jumanji: Bem-Vindo à Selva (Aventura/Comédia) -->
+                        <div class="content-card hidden-initially" data-category="aventura comedia">
+                            <img src="https://br.web.img2.acsta.net/pictures/17/11/28/19/03/5043910.jpg" 
+                                 alt="Jumanji: Bem-Vindo à Selva" class="card-poster">
+                            <div class="card-info">
+                                <h4 class="card-title">Jumanji: Bem-Vindo à Selva</h4>
+                                <div class="card-meta">
+                                    <span class="card-category">Aventura/Comédia</span>
+                                    <span class="card-rating">6.9</span>
+                                </div>
+                                <div class="card-actions">
+                                    <button class="watch-btn" onclick="showMessage('Filme disponível em breve')">
+                                        <i class="bi bi-play-fill"></i> Assistir
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- É o Fim (Comédia) -->
+                        <div class="content-card hidden-initially" data-category="comedia">
+                            <img src="https://br.web.img3.acsta.net/pictures/210/335/21033541_20130830224455231.jpg" 
+                                 alt="É o Fim" class="card-poster">
+                            <div class="card-info">
+                                <h4 class="card-title">É o Fim</h4>
+                                <div class="card-meta">
+                                    <span class="card-category">Comédia</span>
+                                    <span class="card-rating">6.2</span>
+                                </div>
+                                <div class="card-actions">
+                                    <button class="watch-btn" onclick="showMessage('Filme disponível em breve')">
+                                        <i class="bi bi-play-fill"></i> Assistir
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Perdido em Marte (Ficção/Drama) -->
+                        <div class="content-card hidden-initially" data-category="ficcao drama">
+                            <img src="https://m.media-amazon.com/images/M/MV5BMTc2MTQ3MDA1Nl5BMl5BanBnXkFtZTgwODA3OTI4NjE@._V1_.jpg" 
+                                 alt="Perdido em Marte" class="card-poster">
+                            <div class="card-info">
+                                <h4 class="card-title">Perdido em Marte</h4>
+                                <div class="card-meta">
+                                    <span class="card-category">Ficção/Drama</span>
+                                    <span class="card-rating">8.0</span>
+                                </div>
+                                <div class="card-actions">
+                                    <button class="watch-btn" onclick="showMessage('Filme disponível em breve')">
+                                        <i class="bi bi-play-fill"></i> Assistir
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- A Origem (Ficção/Ação) -->
+                        <div class="content-card hidden-initially" data-category="ficcao acao">
+                            <img src="https://uauposters.com.br/media/catalog/product/5/0/508320201013-uau-posters-filmes-a-origem-inception.jpg" 
+                                 alt="A Origem" class="card-poster">
+                            <div class="card-info">
+                                <h4 class="card-title">A Origem</h4>
+                                <div class="card-meta">
+                                    <span class="card-category">Ficção/Ação</span>
+                                    <span class="card-rating">8.8</span>
+                                </div>
+                                <div class="card-actions">
+                                    <button class="watch-btn" onclick="showMessage('Filme disponível em breve')">
+                                        <i class="bi bi-play-fill"></i> Assistir
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Matrix (Ficção/Ação) -->
+                        <div class="content-card hidden-initially" data-category="ficcao acao">
+                            <img src="https://uauposters.com.br/media/catalog/product/3/4/347120140406-uau-posters-filmes-matrix.jpg" 
+                                 alt="Matrix" class="card-poster">
+                            <div class="card-info">
+                                <h4 class="card-title">Matrix</h4>
+                                <div class="card-meta">
+                                    <span class="card-category">Ficção/Ação</span>
+                                    <span class="card-rating">8.7</span>
+                                </div>
+                                <div class="card-actions">
+                                    <button class="watch-btn" onclick="showMessage('Filme disponível em breve')">
+                                        <i class="bi bi-play-fill"></i> Assistir
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Whiplash (Drama) -->
+                        <div class="content-card hidden-initially" data-category="drama">
+                            <img src="https://image.tmdb.org/t/p/original/7fn624j5lj3xTme2SgiLCeuedmO.jpg" 
+                                 alt="Whiplash" class="card-poster">
+                            <div class="card-info">
+                                <h4 class="card-title">Whiplash</h4>
+                                <div class="card-meta">
+                                    <span class="card-category">Drama</span>
+                                    <span class="card-rating">8.5</span>
+                                </div>
+                                <div class="card-actions">
+                                    <button class="watch-btn" onclick="window.location.href='player-filme-44.html'">
+                                        <i class="bi bi-play-fill"></i> Assistir
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- O Grande Showman (Musical/Drama) -->
+                        <div class="content-card hidden-initially" data-category="drama romance">
+                            <img src="https://imagens.publicocdn.com/imagens.aspx/609654?tp=KM" 
+                                 alt="O Grande Showman" class="card-poster">
+                            <div class="card-info">
+                                <h4 class="card-title">O Grande Showman</h4>
+                                <div class="card-meta">
+                                    <span class="card-category">Musical/Drama</span>
+                                    <span class="card-rating">7.5</span>
+                                </div>
+                                <div class="card-actions">
+                                    <button class="watch-btn" onclick="showMessage('Filme disponível em breve')">
+                                        <i class="bi bi-play-fill"></i> Assistir
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Nasce Uma Estrela (Romance/Drama) -->
+                        <div class="content-card hidden-initially" data-category="romance drama">
+                            <img src="https://br.web.img2.acsta.net/pictures/18/06/06/19/11/3472306.jpg" 
+                                 alt="Nasce Uma Estrela" class="card-poster">
+                            <div class="card-info">
+                                <h4 class="card-title">Nasce Uma Estrela</h4>
+                                <div class="card-meta">
+                                    <span class="card-category">Romance/Drama</span>
+                                    <span class="card-rating">7.6</span>
+                                </div>
+                                <div class="card-actions">
+                                    <button class="watch-btn" onclick="showMessage('Filme disponível em breve')">
+                                        <i class="bi bi-play-fill"></i> Assistir
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- A Culpa é das Estrelas (Romance/Drama) -->
+                        <div class="content-card hidden-initially" data-category="romance drama">
+                            <img src="https://m.media-amazon.com/images/M/MV5BNTVkMTFiZWItOTFkOC00YTc3LWFhYzQtZTg3NzAxZjJlNTAyXkEyXkFqcGdeQXVyODE5NzE3OTE@._V1_.jpg" 
+                                 alt="A Culpa é das Estrelas" class="card-poster">
+                            <div class="card-info">
+                                <h4 class="card-title">A Culpa é das Estrelas</h4>
+                                <div class="card-meta">
+                                    <span class="card-category">Romance/Drama</span>
+                                    <span class="card-rating">7.7</span>
+                                </div>
+                                <div class="card-actions">
+                                    <button class="watch-btn" onclick="showMessage('Filme disponível em breve')">
+                                        <i class="bi bi-play-fill"></i> Assistir
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Orgulho e Preconceito (Romance/Drama) -->
+                        <div class="content-card hidden-initially" data-category="romance drama">
+                            <img src="https://m.media-amazon.com/images/M/MV5BMTA1NDQ3NTcyOTNeQTJeQWpwZ15BbWU3MDA0MzA4MzE@._V1_.jpg" 
+                                 alt="Orgulho e Preconceito" class="card-poster">
+                            <div class="card-info">
+                                <h4 class="card-title">Orgulho e Preconceito</h4>
+                                <div class="card-meta">
+                                    <span class="card-category">Romance/Drama</span>
+                                    <span class="card-rating">7.8</span>
+                                </div>
+                                <div class="card-actions">
+                                    <button class="watch-btn" onclick="showMessage('Filme disponível em breve')">
+                                        <i class="bi bi-play-fill"></i> Assistir
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- O Exorcista (Terror) -->
+                        <div class="content-card hidden-initially" data-category="terror">
+                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSLE5paFdWxXIMCoB164EC9k8KUpZiu9ijPNw&s" 
+                                 alt="O Exorcista" class="card-poster">
+                            <div class="card-info">
+                                <h4 class="card-title">O Exorcista</h4>
+                                <div class="card-meta">
+                                    <span class="card-category">Terror</span>
+                                    <span class="card-rating">8.1</span>
+                                </div>
+                                <div class="card-actions">
+                                    <button class="watch-btn" onclick="showMessage('Filme disponível em breve')">
+                                        <i class="bi bi-play-fill"></i> Assistir
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Minha Mãe é uma Peça 2 (Comédia) -->
+                        <div class="content-card hidden-initially" data-category="comedia">
+                            <img src="https://br.web.img2.acsta.net/pictures/16/11/18/15/20/442595.jpg" 
+                                 alt="Minha Mãe é uma Peça 2" class="card-poster">
+                            <div class="card-info">
+                                <h4 class="card-title">Minha Mãe é uma Peça 2</h4>
+                                <div class="card-meta">
+                                    <span class="card-category">Comédia</span>
+                                    <span class="card-rating">7.1</span>
+                                </div>
+                                <div class="card-actions">
+                                    <button class="watch-btn" onclick="showMessage('Filme disponível em breve')">
+                                        <i class="bi bi-play-fill"></i> Assistir
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Os Farofeiros (Comédia) -->
+                        <div class="content-card hidden-initially" data-category="comedia">
+                            <img src="https://upload.wikimedia.org/wikipedia/pt/2/25/Os_Farofeiros.jpg" 
+                                 alt="Os Farofeiros" class="card-poster">
+                            <div class="card-info">
+                                <h4 class="card-title">Os Farofeiros</h4>
+                                <div class="card-meta">
+                                    <span class="card-category">Comédia</span>
+                                    <span class="card-rating">5.8</span>
+                                </div>
+                                <div class="card-actions">
+                                    <button class="watch-btn" onclick="showMessage('Filme disponível em breve')">
+                                        <i class="bi bi-play-fill"></i> Assistir
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Duna Parte Dois (Ficção/Aventura) -->
+                        <div class="content-card hidden-initially" data-category="ficcao aventura">
+                            <img src="https://www.europanet.com.br/upload/id_produto/107___/107350g.jpg" 
+                                 alt="Duna Parte Dois" class="card-poster">
+                            <div class="card-info">
+                                <h4 class="card-title">Duna Parte Dois</h4>
+                                <div class="card-meta">
+                                    <span class="card-category">Ficção/Aventura</span>
+                                    <span class="card-rating">8.6</span>
+                                </div>
+                                <div class="card-actions">
+                                    <button class="watch-btn" onclick="showMessage('Filme disponível em breve')">
+                                        <i class="bi bi-play-fill"></i> Assistir
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Blade Runner 2049 (Ficção) -->
+                        <div class="content-card hidden-initially" data-category="ficcao">
+                            <img src="https://m.media-amazon.com/images/I/71eXjQQOHML.jpg" 
+                                 alt="Blade Runner 2049" class="card-poster">
+                            <div class="card-info">
+                                <h4 class="card-title">Blade Runner 2049</h4>
+                                <div class="card-meta">
+                                    <span class="card-category">Ficção</span>
+                                    <span class="card-rating">8.0</span>
+                                </div>
+                                <div class="card-actions">
+                                    <button class="watch-btn" onclick="showMessage('Filme disponível em breve')">
+                                        <i class="bi bi-play-fill"></i> Assistir
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Indiana Jones e o Reino da Caveira de Cristal (Aventura) -->
+                        <div class="content-card hidden-initially" data-category="aventura">
+                            <img src="https://m.media-amazon.com/images/I/71R-DmiOMIL._AC_UF1000,1000_QL80_.jpg" 
+                                 alt="Indiana Jones e o Reino da Caveira de Cristal" class="card-poster">
+                            <div class="card-info">
+                                <h4 class="card-title">Indiana Jones e o Reino da Caveira de Cristal</h4>
+                                <div class="card-meta">
+                                    <span class="card-category">Aventura</span>
+                                    <span class="card-rating">6.2</span>
+                                </div>
+                                <div class="card-actions">
+                                    <button class="watch-btn" onclick="showMessage('Filme disponível em breve')">
+                                        <i class="bi bi-play-fill"></i> Assistir
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Indiana Jones e a Última Cruzada (Aventura) -->
+                        <div class="content-card hidden-initially" data-category="aventura">
+                            <img src="https://br.web.img3.acsta.net/r_1280_720/medias/nmedia/18/91/98/15/20172684.jpg" 
+                                 alt="Indiana Jones e a Última Cruzada" class="card-poster">
+                            <div class="card-info">
+                                <h4 class="card-title">Indiana Jones e a Última Cruzada</h4>
+                                <div class="card-meta">
+                                    <span class="card-category">Aventura</span>
+                                    <span class="card-rating">8.2</span>
+                                </div>
+                                <div class="card-actions">
+                                    <button class="watch-btn" onclick="showMessage('Filme disponível em breve')">
+                                        <i class="bi bi-play-fill"></i> Assistir
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Tomb Raider 2001 (Ação/Aventura) -->
+                        <div class="content-card hidden-initially" data-category="acao aventura">
+                            <img src="https://m.media-amazon.com/images/M/MV5BNjcxYzIyZWItZWRiOS00ODliLWI3ZTEtZTA4NTg4OGQwZDY1XkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg" 
+                                 alt="Tomb Raider" class="card-poster">
+                            <div class="card-info">
+                                <h4 class="card-title">Tomb Raider (2001)</h4>
+                                <div class="card-meta">
+                                    <span class="card-category">Ação/Aventura</span>
+                                    <span class="card-rating">5.8</span>
+                                </div>
+                                <div class="card-actions">
+                                    <button class="watch-btn" onclick="showMessage('Filme disponível em breve')">
+                                        <i class="bi bi-play-fill"></i> Assistir
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- O Jogo da Imitação (Drama) -->
+                        <div class="content-card hidden-initially" data-category="drama">
+                            <img src="https://br.web.img3.acsta.net/pictures/14/10/30/19/02/198128.jpg" 
+                                 alt="O Jogo da Imitação" class="card-poster">
+                            <div class="card-info">
+                                <h4 class="card-title">O Jogo da Imitação</h4>
+                                <div class="card-meta">
+                                    <span class="card-category">Drama</span>
+                                    <span class="card-rating">8.0</span>
+                                </div>
+                                <div class="card-actions">
+                                    <button class="watch-btn" onclick="showMessage('Filme disponível em breve')">
+                                        <i class="bi bi-play-fill"></i> Assistir
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Steve Jobs (Drama) -->
+                        <div class="content-card hidden-initially" data-category="drama">
+                            <img src="https://macmagazine.com.br/wp-content/uploads/2015/08/27-cartaz-steve-jobs.jpg" 
+                                 alt="Steve Jobs" class="card-poster">
+                            <div class="card-info">
+                                <h4 class="card-title">Steve Jobs</h4>
+                                <div class="card-meta">
+                                    <span class="card-category">Drama</span>
+                                    <span class="card-rating">7.2</span>
+                                </div>
+                                <div class="card-actions">
+                                    <button class="watch-btn" onclick="showMessage('Filme disponível em breve')">
+                                        <i class="bi bi-play-fill"></i> Assistir
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- O Lobo de Wall Street (Drama/Comédia) -->
+                        <div class="content-card hidden-initially" data-category="drama comedia">
+                            <img src="https://uauposters.com.br/media/catalog/product/1/7/178520140528-the-wolf-of-wall-street.jpg" 
+                                 alt="O Lobo de Wall Street" class="card-poster">
+                            <div class="card-info">
+                                <h4 class="card-title">O Lobo de Wall Street</h4>
+                                <div class="card-meta">
+                                    <span class="card-category">Drama/Comédia</span>
+                                    <span class="card-rating">8.2</span>
+                                </div>
+                                <div class="card-actions">
+                                    <button class="watch-btn" onclick="showMessage('Filme disponível em breve')">
+                                        <i class="bi bi-play-fill"></i> Assistir
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Esqueceram de Mim 2 (Comédia/Família) -->
+                        <div class="content-card hidden-initially" data-category="comedia hbo">
+                            <img src="https://br.web.img2.acsta.net/medias/nmedia/18/93/93/99/20287494.jpg" 
+                                 alt="Esqueceram de Mim 2" class="card-poster">
+                            <div class="card-info">
+                                <h4 class="card-title">Esqueceram de Mim 2</h4>
+                                <div class="card-meta">
+                                    <span class="card-category">Comédia/Família</span>
+                                    <span class="card-rating">6.9</span>
+                                </div>
+                                <div class="card-actions">
+                                    <button class="watch-btn" onclick="showMessage('Filme disponível em breve')">
+                                        <i class="bi bi-play-fill"></i> Assistir
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Os Fantasmas se Divertem (Comédia) -->
+                        <div class="content-card hidden-initially" data-category="comedia">
+                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRaOXC9oJPPTnlONB_NvCHO5fnJjIOS-t3apw&s" 
+                                 alt="Os Fantasmas se Divertem" class="card-poster">
+                            <div class="card-info">
+                                <h4 class="card-title">Os Fantasmas se Divertem</h4>
+                                <div class="card-meta">
+                                    <span class="card-category">Comédia</span>
+                                    <span class="card-rating">6.5</span>
+                                </div>
+                                <div class="card-actions">
+                                    <button class="watch-btn" onclick="showMessage('Filme disponível em breve')">
+                                        <i class="bi bi-play-fill"></i> Assistir
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Frozen 1 (Animação) -->
+                        <div class="content-card hidden-initially" data-category="animacao disney">
+                            <img src="https://cdn.europosters.eu/image/750/20838.jpg" 
+                                 alt="Frozen 1" class="card-poster">
+                            <div class="card-info">
+                                <h4 class="card-title">Frozen: Uma Aventura Congelante</h4>
+                                <div class="card-meta">
+                                    <span class="card-category">Animação</span>
+                                    <span class="card-rating">7.4</span>
+                                </div>
+                                <div class="card-actions">
+                                    <button class="watch-btn" onclick="showMessage('Filme disponível em breve')">
+                                        <i class="bi bi-play-fill"></i> Assistir
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Moana 1 (Animação) -->
+                        <div class="content-card hidden-initially" data-category="animacao disney">
+                            <img src="https://m.media-amazon.com/images/I/A1JOaV3B6fL._AC_SL1500_.jpg" 
+                                 alt="Moana 1" class="card-poster">
+                            <div class="card-info">
+                                <h4 class="card-title">Moana: Um Mar de Aventuras</h4>
+                                <div class="card-meta">
+                                    <span class="card-category">Animação</span>
+                                    <span class="card-rating">7.6</span>
+                                </div>
+                                <div class="card-actions">
+                                    <button class="watch-btn" onclick="showMessage('Filme disponível em breve')">
+                                        <i class="bi bi-play-fill"></i> Assistir
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Viva: A Vida é uma Festa (Animação) -->
+                        <div class="content-card hidden-initially" data-category="animacao">
+                            <img src="https://i.pinimg.com/originals/29/db/0c/29db0c0a687e36fd8a03f01d367fb14c.jpg" 
+                                 alt="Viva: A Vida é uma Festa" class="card-poster">
+                            <div class="card-info">
+                                <h4 class="card-title">Viva: A Vida é uma Festa</h4>
+                                <div class="card-meta">
+                                    <span class="card-category">Animação</span>
+                                    <span class="card-rating">8.4</span>
+                                </div>
+                                <div class="card-actions">
+                                    <button class="watch-btn" onclick="showMessage('Filme disponível em breve')">
+                                        <i class="bi bi-play-fill"></i> Assistir
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Top Gun: Ases Indomáveis (Ação) -->
+                        <div class="content-card hidden-initially" data-category="acao">
+                            <img src="https://a-static.mlcdn.com.br/%7Bw%7Dx%7Bh%7D/poster-gigante-top-gun-ases-indomaveis-editora-europa/eurobest/107372/8d76249adf3044eb8974bba587a1a8f9.jpg" 
+                                 alt="Top Gun: Ases Indomáveis" class="card-poster">
+                            <div class="card-info">
+                                <h4 class="card-title">Top Gun: Ases Indomáveis</h4>
+                                <div class="card-meta">
+                                    <span class="card-category">Ação/Drama</span>
+                                    <span class="card-rating">6.9</span>
                                 </div>
                                 <div class="card-actions">
                                     <button class="watch-btn" onclick="showMessage('Filme disponível em breve')">
@@ -1392,6 +2105,7 @@
         // Elementos DOM
         const searchInput = document.getElementById('navbarSearch');
         let currentCategory = 'destaques';
+        let showingAllFilmes = false;
         
         // Inicialização
         document.addEventListener('DOMContentLoaded', function() {
@@ -1609,9 +2323,13 @@
             const sectionHeaders = document.querySelectorAll('.section-header');
             
             if (category === 'destaques') {
-                // Mostrar tudo
+                // Mostrar apenas os filmes iniciais (não os ocultos)
                 allCards.forEach(card => {
-                    card.style.display = 'block';
+                    if (card.classList.contains('hidden-initially')) {
+                        card.style.display = 'none';
+                    } else {
+                        card.style.display = 'block';
+                    }
                 });
                 sections.forEach(section => {
                     section.style.display = 'block';
@@ -1631,7 +2349,7 @@
                 header.style.display = 'flex';
             });
             
-            // Esconder apenas cards que não pertencem à categoria
+            // Mostrar cards que pertencem à categoria (incluindo os ocultos)
             allCards.forEach(card => {
                 const cardCategories = card.dataset.category.split(' ');
                 if (cardCategories.includes(category)) {
@@ -1695,6 +2413,41 @@
             cards.forEach((card, index) => {
                 card.style.animationDelay = `${(index % 4) * 0.1}s`;
             });
+        }
+        
+        // Função para mostrar/ocultar todos os filmes
+        function toggleAllFilmes(event) {
+            event.preventDefault();
+            
+            const hiddenCards = document.querySelectorAll('.hidden-initially');
+            const viewAllBtn = document.getElementById('viewAllBtn');
+            
+            showingAllFilmes = !showingAllFilmes;
+            
+            if (showingAllFilmes) {
+                // Mostrar todos os filmes
+                hiddenCards.forEach(card => {
+                    card.style.display = 'block';
+                });
+                viewAllBtn.innerHTML = 'Ver menos <i class="bi bi-arrow-up"></i>';
+                viewAllBtn.classList.add('expanded');
+                showMessage('Mostrando todos os filmes disponíveis');
+            } else {
+                // Voltar ao estado normal (apenas destaque)
+                hiddenCards.forEach(card => {
+                    card.style.display = 'none';
+                });
+                viewAllBtn.innerHTML = 'Ver todos <i class="bi bi-arrow-right"></i>';
+                viewAllBtn.classList.remove('expanded');
+                
+                // Se estiver na categoria destaque, mostrar apenas os iniciais
+                if (currentCategory === 'destaques') {
+                    filterContentByCategory('destaques');
+                }
+            }
+            
+            // Re-animar os cards que foram mostrados
+            animateCards();
         }
         
         // Função para mostrar mensagens
@@ -1773,12 +2526,21 @@
                     window.location.href = 'player-filme-2.html';
                 }
             }
+            
+            // A para ver todos os filmes
+            if ((e.key === 'a' || e.key === 'A') && e.altKey) {
+                e.preventDefault();
+                const viewAllBtn = document.getElementById('viewAllBtn');
+                if (viewAllBtn) {
+                    viewAllBtn.click();
+                }
+            }
         });
         
         // Inicialização
         window.onload = function() {
             console.log('Página Filmes e Séries carregada');
-            showMessage('Dicas: Ctrl+F = Buscar | 1-9 = Categorias | V = Vingadores | J = John Wick');
+            showMessage('Dicas: Ctrl+F = Buscar | 1-9 = Categorias | V = Vingadores | J = John Wick | Alt+A = Ver todos os filmes');
             
             // Fade in da página
             document.body.style.opacity = '0';
